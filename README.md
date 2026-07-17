@@ -2,15 +2,16 @@
 
 Personal portfolio for **Lorenzo Mascia** — Product Developer focused on AI/ML systems, software products and connected hardware.
 
-A single-page site with a terminal-style hero, tabbed experience, a featured-projects
-grid, an interactive hardware carousel with hover-to-inspect component pins, and a
-canvas-based **SYSTEM MODE** knowledge graph.
+A portfolio with a terminal-style homepage, tabbed experience, a featured-projects
+grid, a dedicated Indoor Tracking System case study, and a canvas-based **SYSTEM MODE**
+knowledge graph.
 
 ## Files
 
 | Path | Description |
 | --- | --- |
 | [`index.html`](index.html) | The standalone, self-contained implementation — open it directly in a browser. |
+| [`indoor-tracking.html`](indoor-tracking.html) | Long-form Indoor Tracking System hardware case study. |
 | [`assets/`](assets/) | Photographs, prototype images and sketches from the Indoor Tracking System bachelor's thesis. |
 | [`Portfolio.dc.html`](Portfolio.dc.html) | The original Claude Design source this site was built from. |
 
@@ -35,7 +36,7 @@ no dependencies. Behaviors reproduced 1:1 from the design:
 - **Magnet buttons** that lean toward the cursor
 - **`style-hover`** shim (inline hover styles applied on `mouseenter`/`mouseleave`)
 - **Experience tabs** switching role / meta / bullets
-- **Hardware carousel** — 3 slides, prev/next + click-to-focus, with hover-to-inspect pins
+- **Hardware case study** — one homepage card linking to a dedicated page with system, transmitter and receiver details
 - **SYSTEM MODE** — an animated, mouse-reactive node graph on `<canvas>` (`Esc` to exit)
 
 Theme accent is driven by the `--accent` / `--accent-text` CSS variables.

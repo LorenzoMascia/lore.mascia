@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indoor Tracking System — Lorenzo Mascia</title>
+<meta name="description" content="Indoor Tracking System case study: an ESP32 infrared transmitter and receiver prototype for zone-based retail tracking.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root { --paper:#f6f3ea; --ink:#191d1f; --muted:#62696d; --line:#d8d1bd; --cyan:#00b3cc; --cyan-dark:#04788e; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:'Space Grotesk',sans-serif; }
+img { max-width:100%; }
+a { color:inherit; }
+nav { position:sticky; top:0; z-index:20; background:rgba(246,243,234,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.nav-inner { max-width:1100px; height:64px; margin:auto; padding:0 36px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.mono { font-family:'IBM Plex Mono',monospace; }
+.back { font-size:12px; text-decoration:none; color:var(--cyan-dark); }
+.container { max-width:1100px; margin:auto; padding:0 36px; }
+.hero { min-height:calc(100vh - 64px); display:flex; align-items:center; padding-top:80px; padding-bottom:80px; }
+.hero-grid { width:100%; display:grid; grid-template-columns:1.05fr .95fr; gap:70px; align-items:center; }
+.eyebrow { margin-bottom:20px; font-size:12px; color:var(--cyan-dark); }
+h1 { margin:0 0 24px; font-size:clamp(48px,7vw,88px); line-height:.98; letter-spacing:-.045em; font-weight:600; }
+.lede { margin:0 0 30px; max-width:660px; font-size:19px; line-height:1.65; color:#4c5357; }
+.meta { display:flex; flex-wrap:wrap; gap:10px; }
+.tag { border:1px solid #c9c2ae; padding:9px 12px; font-size:10.5px; color:var(--muted); }
+.hero-media { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.hero-media figure, .media-card { margin:0; border:1px solid var(--line); background:#fff; padding:14px; }
+.hero-media img { display:block; width:100%; height:290px; object-fit:contain; }
+figcaption { margin-top:10px; color:#858b80; font-size:10px; }
+.section { padding:100px 0; border-top:1px solid var(--line); }
+.section-head { display:grid; grid-template-columns:180px 1fr; gap:34px; margin-bottom:50px; }
+.section-no { color:var(--cyan-dark); font-size:11px; padding-top:8px; }
+h2 { margin:0 0 14px; font-size:clamp(30px,4vw,48px); letter-spacing:-.03em; font-weight:600; }
+.intro { margin:0; max-width:700px; color:var(--muted); font-size:16px; line-height:1.7; }
+.system-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:50px; align-items:center; }
+.system-grid .media-card img { display:block; width:100%; height:520px; object-fit:contain; }
+.flow { margin-top:28px; border-top:1px solid var(--line); }
+.flow-row { display:grid; grid-template-columns:42px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); font-size:13px; }
+.flow-row span:first-child { color:var(--cyan-dark); }
+.device { display:grid; grid-template-columns:1.08fr .92fr; gap:54px; align-items:start; }
+.device + .device { margin-top:110px; padding-top:110px; border-top:1px solid var(--line); }
+.device-gallery { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.device-gallery .main { grid-column:1 / -1; }
+.device-gallery .main img { height:380px; }
+.device-gallery img { display:block; width:100%; height:185px; object-fit:contain; }
+.node-label { margin-bottom:14px; color:var(--cyan-dark); font-size:11px; }
+h3 { margin:0 0 18px; font-size:32px; letter-spacing:-.025em; font-weight:600; }
+.copy { margin:0 0 16px; color:#4c5357; font-size:15.5px; line-height:1.72; }
+.specs { margin-top:28px; border-top:1px solid var(--line); font-size:11.5px; }
+.spec { display:grid; grid-template-columns:90px 1fr; gap:14px; padding:11px 0; border-bottom:1px solid var(--line); }
+.spec span:first-child { color:#858b80; }
+.contribution { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); }
+.contribution div { min-height:170px; padding:24px; border-right:1px solid var(--line); }
+.contribution div:last-child { border-right:0; }
+.contribution strong { display:block; margin:24px 0 8px; font-size:16px; }
+.contribution p { margin:0; color:var(--muted); font-size:13px; line-height:1.55; }
+footer { border-top:1px solid var(--line); }
+.footer-inner { max-width:1100px; margin:auto; padding:30px 36px; display:flex; justify-content:space-between; gap:20px; color:#858b80; font-size:10.5px; }
+@media (max-width:800px) {
+  .nav-inner,.container { padding-left:22px; padding-right:22px; }
+  .hero { min-height:auto; padding-top:90px; }
+  .hero-grid,.system-grid,.device { grid-template-columns:1fr; gap:38px; }
+  .section-head { grid-template-columns:1fr; gap:10px; }
+  .section { padding:72px 0; }
+  .system-grid .media-card img { height:390px; }
+  .contribution { grid-template-columns:1fr 1fr; }
+  .contribution div:nth-child(2) { border-right:0; }
+  .contribution div:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+}
+@media (max-width:480px) {
+  .hero-media,.device-gallery,.contribution { grid-template-columns:1fr; }
+  .hero-media img { height:230px; }
+  .device-gallery .main { grid-column:auto; }
+  .device-gallery .main img,.device-gallery img { height:240px; }
+  .contribution div { border-right:0; border-bottom:1px solid var(--line); }
+  .contribution div:last-child { border-bottom:0; }
+  .footer-inner { padding-left:22px; padding-right:22px; flex-direction:column; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="back mono" href="index.html#hardware">← BACK TO PORTFOLIO</a>
+    <span class="mono" style="font-size:11px; color:#858b80;">Lorenzo Mascia · case.01</span>
+  </div>
+</nav>
+
+<main>
+  <header class="hero container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow mono">CONNECTED HARDWARE · BACHELOR'S THESIS · 2024</div>
+        <h1>Indoor<br>Tracking System</h1>
+        <p class="lede">An end-to-end prototype for detecting when a retail cart enters a predefined store zone, connecting physical infrared nodes to backend events, notifications and movement-pattern analysis.</p>
+        <div class="meta mono">
+          <span class="tag">Mar–Oct 2024</span>
+          <span class="tag">ESP32</span>
+          <span class="tag">infrared localization</span>
+          <span class="tag">embedded firmware</span>
+          <span class="tag">FDM enclosures</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <figure><img src="assets/hw-board.png" alt="Infrared transmitter prototype"><figcaption class="mono">01 — ceiling transmitter</figcaption></figure>
+        <figure><img src="assets/hw-rx-board.png" alt="Infrared receiver prototype"><figcaption class="mono">02 — cart receiver</figcaption></figure>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-no mono">01 / SYSTEM</div>
+        <div><h2>From a physical zone to a digital event</h2><p class="intro">The project combines two custom hardware nodes with a software pipeline. The prototype was designed as one complete system rather than a collection of disconnected components.</p></div>
+      </div>
+      <div class="system-grid">
+        <figure class="media-card"><img src="assets/sketch-schematic.png" alt="Original Indoor Tracking System schematic"><figcaption class="mono">fig.01 — original system schematic</figcaption></figure>
+        <div>
+          <p class="copy">A ceiling-mounted transmitter emits a coded infrared beacon over a predefined area. The receiver attached to the shopping cart detects the beacon when it crosses into that area, timestamps the event and sends it over Wi-Fi.</p>
+          <p class="copy">The backend can associate the event with a store zone and use it as an input for personalized notifications and movement-pattern clustering.</p>
+          <div class="flow mono">
+            <div class="flow-row"><span>01</span><span>Transmitter defines the infrared zone</span></div>
+            <div class="flow-row"><span>02</span><span>Receiver detects entry and timestamps the event</span></div>
+            <div class="flow-row"><span>03</span><span>Wi-Fi carries the event to the backend service</span></div>
+            <div class="flow-row"><span>04</span><span>Software supports notifications and analysis</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-no mono">02 / HARDWARE</div>
+        <div><h2>Two nodes, designed as one system</h2><p class="intro">Both prototypes were developed from circuit and enclosure sketches through working perfboard implementations and custom 3D-printed housings.</p></div>
+      </div>
+
+      <article class="device" id="transmitter">
+        <div class="device-gallery">
+          <figure class="media-card main"><img src="assets/hw-board.png" alt="ESP32 transmitter board"><figcaption class="mono">working transmitter prototype</figcaption></figure>
+          <figure class="media-card"><img src="assets/hw-enclosure.png" alt="3D-printed transmitter enclosure"><figcaption class="mono">custom FDM enclosure</figcaption></figure>
+          <figure class="media-card"><img src="assets/sketch-transmitter.png" alt="Transmitter enclosure sketch"><figcaption class="mono">first enclosure sketch</figcaption></figure>
+        </div>
+        <div>
+          <div class="node-label mono">NODE 01 / IR TRANSMITTER</div>
+          <h3>The invisible boundary</h3>
+          <p class="copy">Mounted on the ceiling, the transmitter floods a cone-shaped area with a coded 940nm infrared beacon. This creates the invisible zone boundary used by the rest of the system.</p>
+          <p class="copy">I designed the circuit and driver stage on perfboard, wrote the embedded beacon-control firmware and developed the enclosure around the working prototype.</p>
+          <div class="specs mono">
+            <div class="spec"><span>mcu</span><span>ESP32-WROOM-32</span></div>
+            <div class="spec"><span>driver</span><span>2N2222 NPN + current-limiting resistor</span></div>
+            <div class="spec"><span>emitter</span><span>940nm infrared LED</span></div>
+            <div class="spec"><span>power</span><span>5V via screw terminal</span></div>
+            <div class="spec"><span>enclosure</span><span>Custom FDM 3D print</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="device" id="receiver">
+        <div class="device-gallery">
+          <figure class="media-card main"><img src="assets/hw-rx-board.png" alt="ESP32 receiver board"><figcaption class="mono">working wireless receiver prototype</figcaption></figure>
+          <figure class="media-card"><img src="assets/hw-rx-enclosure.png" alt="Receiver enclosure with internal battery"><figcaption class="mono">battery and hook-on enclosure</figcaption></figure>
+          <figure class="media-card"><img src="assets/sketch-receiver.png" alt="Receiver enclosure sketch"><figcaption class="mono">first receiver sketch</figcaption></figure>
+        </div>
+        <div>
+          <div class="node-label mono">NODE 02 / IR RECEIVER</div>
+          <h3>The mobile sensing node</h3>
+          <p class="copy">Attached to the shopping cart, the receiver detects the transmitter's beacon, timestamps the zone-entry event and sends it over Wi-Fi to the backend.</p>
+          <p class="copy">I designed the sensing and power circuit, battery supply, embedded firmware and uplink, together with the hooked enclosure used to mount the node to the cart.</p>
+          <div class="specs mono">
+            <div class="spec"><span>mcu</span><span>ESP32-WROOM-32</span></div>
+            <div class="spec"><span>sensor</span><span>38kHz infrared receiver module</span></div>
+            <div class="spec"><span>power</span><span>Li-ion cell + rocker switch</span></div>
+            <div class="spec"><span>uplink</span><span>Wi-Fi → backend event</span></div>
+            <div class="spec"><span>enclosure</span><span>Custom hook-on FDM 3D print</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-no mono">03 / OWNERSHIP</div>
+        <div><h2>End-to-end design responsibility</h2><p class="intro">The thesis covered the complete path from physical sensing to documented working prototypes.</p></div>
+      </div>
+      <div class="contribution">
+        <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">01</span><strong>Electronics</strong><p>Infrared pipeline, sensing, driver and power circuits.</p></div>
+        <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">02</span><strong>Firmware</strong><p>Embedded behavior for beacon control, detection and event uplink.</p></div>
+        <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">03</span><strong>Industrial design</strong><p>Prototype layout and custom 3D-printed enclosures.</p></div>
+        <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">04</span><strong>System design</strong><p>Modular architecture, backend-event flow and technical documentation.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="footer-inner mono"><span>© 2026 Lorenzo Mascia</span><a href="index.html#hardware">Return to portfolio ↑</a></div></footer>
+</body>
+</html>
