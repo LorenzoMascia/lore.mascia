@@ -33,6 +33,7 @@ a:hover { color: var(--accent, #00b3cc); }
   [data-mq="wraprow"] { flex-wrap: wrap; row-gap: 12px !important; }
   [data-mq="arrows"] { right: 14px !important; bottom: 14px !important; }
   [data-mq="carousel"] button { width: 40px; }
+  [data-mq="timeline-scroll"] { display: block !important; overflow-x: auto; margin-right: -22px; padding-right: 22px; scrollbar-width: thin; }
   section, header { padding-left: 22px !important; padding-right: 22px !important; }
 }
 @media (max-width: 480px) {
@@ -65,9 +66,7 @@ a:hover { color: var(--accent, #00b3cc); }
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6a7276; margin-bottom: 34px;">
       <span style="color: var(--accent-text, #04788e);">lorenzo@dev</span>:~$ <span id="typed"></span><span style="display: inline-block; width: 8px; height: 15px; background: var(--accent, #00b3cc); vertical-align: -2px; margin-left: 2px; animation: blink 1.1s steps(1) infinite;"></span>
     </div>
-    <h1 style="margin: 0 0 30px; font-size: clamp(46px, 6.6vw, 82px); font-weight: 600; line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;">
-      Hi, I'm Lorenzo.<br>I turn AI ideas into systems that work <span style="color: var(--accent-text, #04788e);">in the real world.</span>
-    </h1>
+    <h1 style="margin: 0 0 30px; font-size: clamp(46px, 6.6vw, 82px); font-weight: 600; line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;">Hi, I'm Lorenzo.</h1>
     <p style="margin: 0 0 44px; font-size: 19px; line-height: 1.6; color: #4c5357; max-width: 580px; text-wrap: pretty;">
       Product Developer based in Naples, Italy. I build applied AI systems, software products and connected hardware — from early prototype to working experience.
     </p>
@@ -106,6 +105,46 @@ a:hover { color: var(--accent, #00b3cc); }
       <h2 style="margin: 0; font-size: 32px; font-weight: 600; letter-spacing: -0.02em;">Experience</h2>
       <div style="flex: 1; height: 1px; background: #e4decd; align-self: center;"></div>
     </div>
+    <div data-reveal="true" data-mq="timeline-scroll" style="display: flex; justify-content: center; margin: 0 0 54px;">
+      <svg viewBox="0 0 860 380" role="img" aria-labelledby="journeyTitle journeyDesc" style="display: block; width: 860px; max-width: none; height: auto; margin: 0 auto; overflow: visible;">
+        <title id="journeyTitle">Professional and academic path</title>
+        <desc id="journeyDesc">A timeline showing the Ericsson internship progressing to Product Developer, plus bachelor's and master's degrees with exchange-program branches to Madrid and Porto.</desc>
+        <g font-family="'IBM Plex Mono', monospace" fill="#6a7276" font-size="11" letter-spacing="1.2">
+          <text x="0" y="82" fill="#04788e">WORK EXPERIENCE</text>
+          <text x="0" y="232" fill="#04788e">EDUCATION</text>
+        </g>
+
+        <path d="M142 75 H550" stroke="#c9c2ae" stroke-width="1.5" fill="none"/>
+        <path d="M142 54 C142 36 154 27 174 27 H518 C538 27 550 36 550 54" stroke="#00b3cc" stroke-width="1.5" fill="none"/>
+        <text x="346" y="18" text-anchor="middle" fill="#04788e" font-family="'IBM Plex Mono', monospace" font-size="11" letter-spacing="1.3">ERICSSON</text>
+        <circle cx="212" cy="75" r="7" fill="#fdfbf4" stroke="#00b3cc" stroke-width="2"/>
+        <circle cx="480" cy="75" r="7" fill="#00b3cc"/>
+        <g font-family="'Space Grotesk', sans-serif" fill="#191d1f">
+          <text x="212" y="109" text-anchor="middle" font-size="16" font-weight="600">Integration Engineer</text>
+          <text x="212" y="128" text-anchor="middle" font-size="13" fill="#6a7276">Intern · Jan–Jun 2025</text>
+          <text x="480" y="109" text-anchor="middle" font-size="16" font-weight="600">Product Developer</text>
+          <text x="480" y="128" text-anchor="middle" font-size="13" fill="#6a7276">Jul 2025 — present</text>
+        </g>
+
+        <path d="M142 225 H550" stroke="#c9c2ae" stroke-width="1.5" fill="none"/>
+        <circle cx="212" cy="225" r="7" fill="#fdfbf4" stroke="#00b3cc" stroke-width="2"/>
+        <circle cx="480" cy="225" r="7" fill="#00b3cc"/>
+        <path d="M322 225 C322 272 361 286 399 286" stroke="#00b3cc" stroke-width="1.5" fill="none"/>
+        <path d="M480 225 C480 272 569 286 640 286" stroke="#00b3cc" stroke-width="1.5" fill="none"/>
+        <circle cx="399" cy="286" r="4" fill="#f6f3ea" stroke="#00b3cc" stroke-width="1.5"/>
+        <circle cx="640" cy="286" r="4" fill="#f6f3ea" stroke="#00b3cc" stroke-width="1.5"/>
+        <g font-family="'Space Grotesk', sans-serif" fill="#191d1f">
+          <text x="212" y="191" text-anchor="middle" font-size="16" font-weight="600">BSc Management Engineering</text>
+          <text x="212" y="210" text-anchor="middle" font-size="13" fill="#6a7276">Parthenope · completed 2024</text>
+          <text x="480" y="191" text-anchor="middle" font-size="16" font-weight="600">MSc Management Engineering</text>
+          <text x="480" y="210" text-anchor="middle" font-size="13" fill="#6a7276">Parthenope · 2024 — present</text>
+          <text x="414" y="319" font-size="14" font-weight="600">Exchange Program · Madrid</text>
+          <text x="414" y="337" font-size="12" fill="#6a7276">ETSIDI · UPM · 2022–2023</text>
+          <text x="655" y="319" font-size="14" font-weight="600">Exchange Program · Porto</text>
+          <text x="655" y="337" font-size="12" fill="#6a7276">FEUP · 2026</text>
+        </g>
+      </svg>
+    </div>
     <div data-reveal="true" data-mq="stack" style="display: grid; grid-template-columns: 210px 1fr; gap: 52px; min-height: 250px;">
       <div id="expTabs" data-mq="tabsrow" style="display: flex; flex-direction: column;"></div>
       <div>
@@ -116,7 +155,7 @@ a:hover { color: var(--accent, #00b3cc); }
     </div>
   </section>
 
-  <section id="software" data-mq="fitauto" style="max-width: 1100px; margin: 0 auto; padding: 92px 36px 36px; height: 100vh; min-height: 640px; box-sizing: border-box; display: flex; flex-direction: column; width: 100%;">
+  <section id="software" data-mq="fitauto" style="max-width: 1100px; margin: 0 auto; padding: 76px 36px 60px; height: 100vh; min-height: 640px; box-sizing: border-box; display: flex; flex-direction: column; width: 100%;">
     <div data-reveal="true" style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; flex-shrink: 0;">
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-text, #04788e);">03</span>
       <h2 style="margin: 0; font-size: 32px; font-weight: 600; letter-spacing: -0.02em;">Featured Projects</h2>
@@ -126,9 +165,7 @@ a:hover { color: var(--accent, #00b3cc); }
 
     <div data-reveal="true" data-mq="grid1" style="flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px;">
       <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
-        <div style="flex: 1; min-height: 90px; background: repeating-linear-gradient(45deg, #ede8d9 0 12px, #f2eee1 12px 24px); border-bottom: 1px solid #e0dac7; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">[ drop: lifequest demo · 4–6s silent loop ]</span>
-        </div>
+        <img src="assets/projects/lifequest-cover.png" alt="Abstract visual map for LifeQuest" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.01 — web platform</div>
           <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px;">LifeQuest / QuestCore</div>
@@ -140,9 +177,7 @@ a:hover { color: var(--accent, #00b3cc); }
         </div>
       </div>
       <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
-        <div style="flex: 1; min-height: 90px; background: repeating-linear-gradient(45deg, #ede8d9 0 12px, #f2eee1 12px 24px); border-bottom: 1px solid #e0dac7; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">[ drop: nl→sql demo · question typed, chart appears ]</span>
-        </div>
+        <img src="assets/projects/nl-analytics-cover.png" alt="Abstract operational analytics dashboard visual" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.02 — applied AI</div>
           <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px;">Natural-Language Analytics Dashboard</div>
@@ -154,9 +189,7 @@ a:hover { color: var(--accent, #00b3cc); }
         </div>
       </div>
       <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
-        <div style="flex: 1; min-height: 90px; background: repeating-linear-gradient(45deg, #ede8d9 0 12px, #f2eee1 12px 24px); border-bottom: 1px solid #e0dac7; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">[ drop: correlation graph animation ]</span>
-        </div>
+        <img src="assets/projects/correlai-cover.png" alt="Synthetic alarm correlation graph visual" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.03 — public ML experiment</div>
           <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px;">CorrelAI · Alarm Correlation</div>
@@ -168,9 +201,7 @@ a:hover { color: var(--accent, #00b3cc); }
         </div>
       </div>
       <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
-        <div style="flex: 1; min-height: 90px; background: repeating-linear-gradient(45deg, #ede8d9 0 12px, #f2eee1 12px 24px); border-bottom: 1px solid #e0dac7; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">[ drop: in-browser RAG demo capture ]</span>
-        </div>
+        <img src="assets/projects/wasm-rag-cover.png" alt="Document chunks flowing into local vector search" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.04 — edge AI</div>
           <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px;">WASM RAG</div>
@@ -184,15 +215,15 @@ a:hover { color: var(--accent, #00b3cc); }
     </div>
   </section>
 
-  <section id="hardware" style="background: #fdfbf4; border-top: 1px solid #e4decd; border-bottom: 1px solid #e4decd;">
-    <div style="max-width: 1100px; margin: 0 auto; padding: 90px 36px; min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; width: 100%;">
+  <section id="hardware">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 64px 36px; min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; width: 100%;">
       <div data-reveal="true" style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 16px;">
         <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-text, #04788e);">04</span>
         <h2 style="margin: 0; font-size: 32px; font-weight: 600; letter-spacing: -0.02em;">Hardware</h2>
         <div style="flex: 1; height: 1px; background: #e4decd; align-self: center;"></div>
       </div>
       <p data-reveal="true" style="margin: 0 0 20px; font-size: 16px; color: #6a7276; max-width: 720px; text-wrap: pretty;">For my bachelor's thesis in Management Engineering I designed an end-to-end indoor tracking prototype for retail environments. ESP32-based infrared nodes detected customers entering predefined store zones, sent events to a backend service and supported movement-pattern clustering and personalized notifications.</p>
-      <div data-reveal="true" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 70px; padding: 20px 0;">
+      <div data-reveal="true" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 38px; padding: 20px 0;">
         <div style="border: 1px solid #c9c2ae; padding: 10px 16px; text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;">TRANSMITTER</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">ceiling</div></div>
         <div style="text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">ir beacon</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-text, #04788e);">──▸</div></div>
         <div style="border: 1px solid #c9c2ae; padding: 10px 16px; text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;">RECEIVER</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">on the cart</div></div>
@@ -208,7 +239,7 @@ a:hover { color: var(--accent, #00b3cc); }
         <button id="hwNext" style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #191d1f; background: transparent; border: 1px solid #c9c2ae; padding: 8px 16px; cursor: pointer; transition: all .2s;" style-hover="border: 1px solid var(--accent, #00b3cc); color: var(--accent-text, #04788e);">→</button>
       </div>
       <div style="position: relative; overflow: hidden; width: 100vw; margin-left: calc(50% - 50vw);">
-      <div class="hw-slide" data-slide="0" style="top: 0; width: min(1000px, 86vw); left: 50%; background: #fdfbf4; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: relative; transform: translateX(-50%); opacity: 1; z-index: 3;">
+      <div class="hw-slide" data-slide="0" style="top: 0; width: min(1000px, 86vw); left: 50%; background: transparent; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: relative; transform: translateX(-50%); opacity: 1; z-index: 3;">
       <div data-mq="stack" style="display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: start;">
         <div>
           <div id="hwBoard1" style="position: relative; border: 1px solid #e0dac7; background: #ffffff; padding: 26px; cursor: crosshair;">
@@ -265,7 +296,7 @@ a:hover { color: var(--accent, #00b3cc); }
         </div>
       </div>
       </div>
-      <div class="hw-slide" data-slide="1" style="top: 0; width: min(1000px, 86vw); left: 50%; background: #fdfbf4; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: absolute; transform: translateX(62%) scale(.88); opacity: .35; z-index: 1; cursor: pointer;">
+      <div class="hw-slide" data-slide="1" style="top: 0; width: min(1000px, 86vw); left: 50%; background: transparent; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: absolute; transform: translateX(62%) scale(.88); opacity: .35; z-index: 1; cursor: pointer;">
       <div data-mq="stack" style="display: grid; grid-template-columns: .95fr 1.05fr; gap: 64px; align-items: start;">
         <div>
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e); margin-bottom: 12px;">hw.02 — receiver · bachelor's thesis · 2024</div>
@@ -316,7 +347,7 @@ a:hover { color: var(--accent, #00b3cc); }
         </div>
       </div>
       </div>
-      <div class="hw-slide" data-slide="2" style="top: 0; width: min(1000px, 86vw); left: 50%; background: #fdfbf4; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: absolute; transform: translateX(-162%) scale(.88); opacity: .35; z-index: 1; cursor: pointer;">
+      <div class="hw-slide" data-slide="2" style="top: 0; width: min(1000px, 86vw); left: 50%; background: transparent; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: absolute; transform: translateX(-162%) scale(.88); opacity: .35; z-index: 1; cursor: pointer;">
       <div style="padding: 10px 0 30px;">
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e); margin-bottom: 20px;">// from the build log — early sketches</div>
         <div data-mq="stack" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; align-items: stretch;">
@@ -348,25 +379,25 @@ a:hover { color: var(--accent, #00b3cc); }
     </div>
     <div data-reveal="true" data-mq="grid2m" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;">
       <a href="https://github.com/LorenzoMascia/nl2py" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: inherit; background: #fdfbf4; border: 1px solid #e4decd; padding: 24px 22px; transition: transform .25s ease, border-color .25s ease;" style-hover="transform: translateY(-4px); border: 1px solid var(--accent, #00b3cc);">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.01</span><span style="color: #8b8f83;">↗</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.01</span><img src="assets/projects/nl2py-badge.png" alt="" loading="lazy" style="width: 58px; height: 58px; object-fit: cover; border-radius: 50%; border: 1px solid #e0dac7;"><span style="color: #8b8f83;">↗</span></div>
         <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">NL2Py</div>
         <div style="font-size: 13.5px; line-height: 1.55; color: #6a7276; margin-bottom: 16px;">A natural-language-to-Python compiler with 35+ modules for cloud services, databases, APIs and infrastructure tooling.</div>
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">Python · TF-IDF · Gradio</div>
       </a>
       <a href="https://github.com/LorenzoMascia/llm-distillery" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: inherit; background: #fdfbf4; border: 1px solid #e4decd; padding: 24px 22px; transition: transform .25s ease, border-color .25s ease;" style-hover="transform: translateY(-4px); border: 1px solid var(--accent, #00b3cc);">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.02</span><span style="color: #8b8f83;">↗</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.02</span><img src="assets/projects/llm-distillery-badge.png" alt="" loading="lazy" style="width: 58px; height: 58px; object-fit: cover; border-radius: 50%; border: 1px solid #e0dac7;"><span style="color: #8b8f83;">↗</span></div>
         <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">LLM Distillery</div>
         <div style="font-size: 13.5px; line-height: 1.55; color: #6a7276; margin-bottom: 16px;">A teacher–student pipeline for synthetic dataset generation and parameter-efficient fine-tuning of a compact anonymization model.</div>
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">Python · LoRA · synthetic data</div>
       </a>
       <a href="https://github.com/LorenzoMascia/cloud-rush" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: inherit; background: #fdfbf4; border: 1px solid #e4decd; padding: 24px 22px; transition: transform .25s ease, border-color .25s ease;" style-hover="transform: translateY(-4px); border: 1px solid var(--accent, #00b3cc);">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.03</span><span style="color: #8b8f83;">↗</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.03</span><img src="assets/projects/cloud-rush-badge.png" alt="" loading="lazy" style="width: 58px; height: 58px; object-fit: cover; border-radius: 50%; border: 1px solid #e0dac7;"><span style="color: #8b8f83;">↗</span></div>
         <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">Cloud Rush</div>
         <div style="font-size: 13.5px; line-height: 1.55; color: #6a7276; margin-bottom: 16px;">A dependency-free 3D arcade flight game with a custom perspective renderer, enemies, touch controls and autopilot.</div>
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">JavaScript · Canvas · game systems</div>
       </a>
       <a href="https://github.com/LorenzoMascia/vinted_autolister" target="_blank" rel="noopener" style="display: block; text-decoration: none; color: inherit; background: #fdfbf4; border: 1px solid #e4decd; padding: 24px 22px; transition: transform .25s ease, border-color .25s ease;" style-hover="transform: translateY(-4px); border: 1px solid var(--accent, #00b3cc);">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.04</span><span style="color: #8b8f83;">↗</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e);">exp.04</span><img src="assets/projects/vinted-autolister-badge.png" alt="" loading="lazy" style="width: 58px; height: 58px; object-fit: cover; border-radius: 50%; border: 1px solid #e0dac7;"><span style="color: #8b8f83;">↗</span></div>
         <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">Vinted AutoLister</div>
         <div style="font-size: 13.5px; line-height: 1.55; color: #6a7276; margin-bottom: 16px;">A multimodal pipeline for turning clothing photos and basic metadata into structured product listings and pricing suggestions.</div>
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83;">Python · multimodal LLM · product workflow</div>
@@ -548,7 +579,7 @@ a:hover { color: var(--accent, #00b3cc); }
     },
     {
       label: 'International',
-      role: 'Erasmus+ · Madrid and Porto',
+      role: 'Exchange Program · Madrid and Porto',
       meta: 'UPM ETSIDI 2022–2023 · FEUP 2026',
       bullets: [
         'Completed a full academic year at ETSIDI, Universidad Politécnica de Madrid, during my bachelor\'s degree.',
@@ -616,7 +647,7 @@ a:hover { color: var(--accent, #00b3cc); }
       top: '0',
       width: 'min(1000px, 86vw)',
       left: '50%',
-      background: '#fdfbf4',
+      background: 'transparent',
       transition: 'transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease'
     };
     if (d === 0) {
@@ -661,7 +692,11 @@ a:hover { color: var(--accent, #00b3cc); }
   var sectionIds = ['top', 'about', 'experience', 'software', 'hardware', 'experiments', 'writing', 'contact'];
   function goto(id) {
     var el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+    if (!el) return;
+    var nav = document.querySelector('nav');
+    var navHeight = nav ? nav.getBoundingClientRect().height : 0;
+    var target = el.getBoundingClientRect().top + window.scrollY - navHeight / 2;
+    window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
   }
   function sectionStep(dir) {
     var y = window.scrollY + window.innerHeight / 2;
@@ -676,6 +711,17 @@ a:hover { color: var(--accent, #00b3cc); }
   }
   document.getElementById('sectionUp').addEventListener('click', function () { sectionStep(-1); });
   document.getElementById('sectionDown').addEventListener('click', function () { sectionStep(1); });
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      var id = link.getAttribute('href').slice(1);
+      if (sectionIds.indexOf(id) === -1) return;
+      event.preventDefault();
+      goto(id);
+    });
+  });
+  if (location.hash && sectionIds.indexOf(location.hash.slice(1)) !== -1) {
+    requestAnimationFrame(function () { goto(location.hash.slice(1)); });
+  }
 
   // ---- SYSTEM MODE ----
   var overlay = document.getElementById('systemOverlay');
