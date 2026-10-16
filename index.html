@@ -52,44 +52,55 @@ a:hover { color: var(--accent, #00b3cc); }
   [data-mq="hw-selector"], [data-mq="hw-parts"] { grid-template-columns: 1fr !important; }
 }
 </style>
+<link rel="stylesheet" href="assets/refresh.css">
+<script src="assets/refresh.js" defer></script>
 </head>
 <body>
-<div style="font-family: 'Space Grotesk', sans-serif; background: #f6f3ea; color: #191d1f; min-height: 100vh;">
+<a href="#top" class="skip-link">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<div class="portfolio-shell" style="font-family: 'Space Grotesk', sans-serif; background: #f6f3ea; color: #191d1f; min-height: 100vh;">
 
-  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(246,243,234,.88); backdrop-filter: blur(10px); border-bottom: 1px solid #e4decd;">
-    <div style="max-width: 1100px; margin: 0 auto; padding: 0 36px; height: 64px; display: flex; align-items: center; justify-content: space-between;">
-      <a href="#top" style="font-weight: 600; font-size: 16px; color: #191d1f; text-decoration: none; letter-spacing: -0.01em;">Lorenzo Mascia</a>
-      <div data-mq="navlinks" style="display: flex; align-items: center; gap: 26px;">
-        <a href="#about" style="font-size: 14px; color: #4c5357; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">About</a>
-        <a href="#experience" style="font-size: 14px; color: #4c5357; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">Experience</a>
-        <a href="#software" style="font-size: 14px; color: #4c5357; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">Software</a>
-        <a href="#experiments" style="font-size: 14px; color: #4c5357; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">Experiments</a>
-        <a href="#hardware" style="font-size: 14px; color: #4c5357; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">Hardware</a>
-        <a href="#writing" style="font-size: 14px; color: #4c5357; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">Writing</a>
-        <button id="openSystemBtn" data-magnet="true" style="display: flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .1em; color: var(--accent-text, #04788e); background: transparent; border: 1px solid var(--accent-text, #04788e); padding: 8px 13px; cursor: pointer; transition: transform .15s ease, background .2s;" style-hover="background: rgba(0,179,204,.08);">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent, #00b3cc); animation: pulse 2.4s infinite;"></span>
-          SYSTEM MODE
-        </button>
+  <nav class="site-nav" aria-label="Main navigation" style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; border-bottom: 1px solid #dcd8cb;">
+    <div class="nav-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">lm.</span>Lorenzo Mascia<span style="color: #04788e;">/</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#software">Selected work</a><a href="#hardware">Hardware</a><a href="#writing">Writing</a><a href="#contact">Contact</a>
+      </div>
+      <div class="nav-tools">
+        <button class="tool-button" id="openCommands" aria-label="Open quick navigation" aria-haspopup="dialog"><span class="command-label">Jump to</span><kbd id="commandShortcut">Ctrl K</kbd></button>
+        <button class="tool-button system-trigger" id="openSystemBtn" aria-haspopup="dialog"><span class="status-dot" aria-hidden="true"></span>SYSTEM MODE</button>
+        <button class="tool-button menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu +</button>
       </div>
     </div>
   </nav>
 
-  <header id="top" style="max-width: 1100px; margin: 0 auto; padding: 170px 36px 90px; min-height: 100vh; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; justify-content: center;">
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6a7276; margin-bottom: 34px;">
-      <span style="color: var(--accent-text, #04788e);">lorenzo@dev</span>:~$ <span id="typed"></span><span style="display: inline-block; width: 8px; height: 15px; background: var(--accent, #00b3cc); vertical-align: -2px; margin-left: 2px; animation: blink 1.1s steps(1) infinite;"></span>
+  <header id="top" class="hero-v2" style="margin: 0 auto; display: flex; flex-direction: column; width: 100%;">
+    <div class="hero-topline hero-entrance"><span><i class="status-dot" aria-hidden="true"></i> PRODUCT DEVELOPER / NAPLES, ITALY</span><span>AI SYSTEMS · SOFTWARE · CONNECTED HARDWARE</span></div>
+    <div class="hero-grid">
+      <div class="hero-copy hero-entrance">
+        <p class="hero-intro">Hi, I'm Lorenzo <span aria-hidden="true">↗</span></p>
+        <h1><span class="line">From a spark.</span><span class="line">To a system.</span><span class="line"><em>To real life.</em></span></h1>
+        <p class="hero-description">I connect AI, software and hardware to build products that work in the real world. From the first prototype to the whole experience.</p>
+        <div class="hero-actions"><a class="primary-action" href="#software" data-magnet>Explore my work <span aria-hidden="true">↘</span></a><a class="text-action" href="assets/documents/CV-2026-Lorenzo-Mascia.pdf" download>Download CV ↓</a></div>
+        <div class="hero-socials"><a href="https://github.com/LorenzoMascia" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/lorenzo-mascia" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://howai.cloud" target="_blank" rel="noopener">howai.cloud ↗</a></div>
+      </div>
+      <div class="orbital hero-entrance" aria-label="Explore the four connected areas of my work">
+        <svg class="orbit-drawing" viewBox="0 0 520 520" aria-hidden="true">
+          <g class="orbit-grid"><circle cx="260" cy="260" r="205" stroke-dasharray="2 8"/><circle cx="260" cy="260" r="155"/><path d="M260 35V485M35 260H485" stroke-dasharray="2 8"/><path d="M110 110L410 410M110 410L410 110" opacity=".45"/></g>
+          <g class="orbit-ring"><ellipse class="orbit-wire" cx="260" cy="260" rx="204" ry="115" transform="rotate(-32 260 260)"/><circle class="orbit-particle" cx="433" cy="151" r="4"/><circle class="orbit-particle" cx="87" cy="369" r="3"/></g>
+          <g class="orbit-ring reverse"><ellipse cx="260" cy="260" rx="193" ry="116" transform="rotate(48 260 260)" stroke="#9cb6b0" stroke-width="1" fill="none"/><circle class="orbit-particle" cx="389" cy="403" r="3"/><circle cx="131" cy="117" r="5" stroke="#04788e" stroke-width="1" fill="#f6f3ea"/></g>
+          <g fill="#8a9a8d"><circle cx="260" cy="55" r="2"/><circle cx="260" cy="465" r="2"/><circle cx="55" cy="260" r="2"/><circle cx="465" cy="260" r="2"/></g>
+        </svg>
+        <span class="orbit-coordinate top">IDEAS IN ORBIT</span><span class="orbit-coordinate left">40.8518° N / 14.2681° E</span>
+        <div class="orbit-core" aria-hidden="true"><strong>lm.</strong><span>CONNECT THE DOTS</span></div>
+        <button class="orbit-node" data-domain="hardware" aria-pressed="false"><span class="node-symbol" aria-hidden="true">⌁</span> HARDWARE</button>
+        <button class="orbit-node" data-domain="software" aria-pressed="false"><span class="node-symbol" aria-hidden="true">&lt;/&gt;</span> SOFTWARE</button>
+        <button class="orbit-node" data-domain="ai" aria-pressed="true"><span class="node-symbol" aria-hidden="true">✳</span> APPLIED AI</button>
+        <button class="orbit-node" data-domain="product" aria-pressed="false"><span class="node-symbol" aria-hidden="true">◇</span> PRODUCT</button>
+        <div class="orbit-caption"><p id="domainCaption" aria-live="polite">Making intelligence useful.<br>ML systems, LLMs &amp; experiments.</p><a id="domainLink" href="#software" aria-label="Explore applied AI projects">Explore ↗</a></div>
+      </div>
     </div>
-    <h1 style="margin: 0 0 30px; font-size: clamp(46px, 6.6vw, 82px); font-weight: 600; line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;">Hi, I'm Lorenzo.</h1>
-    <div data-mq="wraprow" style="display: flex; align-items: center; gap: 28px; margin-bottom: 44px;">
-      <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #4c5357; max-width: 580px; text-wrap: pretty;">
-        Product Developer based in Naples, Italy. I build applied AI systems, software products and connected hardware — from early prototype to working experience.
-      </p>
-      <a href="assets/documents/CV-2026-Lorenzo-Mascia.pdf" download="CV-2026-Lorenzo-Mascia.pdf" style="margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .04em; color: #04788e; text-decoration: none; border: 1px solid #00b3cc; padding: 13px 16px; white-space: nowrap; transition: color .2s, background .2s;" style-hover="color: #f6f3ea; background: #04788e;">↓ DOWNLOAD CV</a>
-    </div>
-    <div data-mq="wraprow" style="display: flex; align-items: center; gap: 26px;">
-      <a href="#software" data-magnet="true" style="display: inline-block; background: #191d1f; color: #f6f3ea; text-decoration: none; font-size: 15px; font-weight: 500; padding: 14px 26px; transition: transform .15s ease, background .2s;" style-hover="background: #04788e;">Explore my work ↓</a>
-      <a href="https://github.com/LorenzoMascia" target="_blank" rel="noopener" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #191d1f; text-decoration: none; border-bottom: 1px solid #c9c2ae;" style-hover="color: var(--accent-text, #04788e); border-bottom: 1px solid var(--accent, #00b3cc);">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/lorenzo-mascia" target="_blank" rel="noopener" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #191d1f; text-decoration: none; border-bottom: 1px solid #c9c2ae;" style-hover="color: var(--accent-text, #04788e); border-bottom: 1px solid var(--accent, #00b3cc);">LinkedIn ↗</a>
-    </div>
+    <div class="hero-bottom hero-entrance"><div class="terminal-line"><span class="prompt">lorenzo@dev</span>:~$ <span id="typed">./lorenzo --stack ai · software · hardware</span><span class="terminal-cursor" aria-hidden="true"></span></div><a class="scroll-cue" href="#about">KEEP EXPLORING <span aria-hidden="true">↓</span></a></div>
   </header>
 
   <section id="about" style="max-width: 1100px; margin: 0 auto; padding: 90px 36px; min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; width: 100%;">
@@ -178,8 +189,8 @@ a:hover { color: var(--accent, #00b3cc); }
       <a href="#experiments" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6a7276; text-decoration: none; white-space: nowrap; border: 1px solid #c9c2ae; padding: 8px 14px;" style-hover="color: var(--accent-text, #04788e); border: 1px solid var(--accent, #00b3cc);">+4 experiments ↓</a>
     </div>
 
-    <div data-reveal="true" data-mq="grid1" style="flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px;">
-      <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
+    <div class="project-grid" data-reveal="true" data-mq="grid1" style="flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px;">
+      <div class="project-card" style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
         <img src="assets/projects/lifequest-cover.png" alt="Abstract visual map for LifeQuest" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.01 — web platform</div>
@@ -191,7 +202,7 @@ a:hover { color: var(--accent, #00b3cc); }
           </div>
         </div>
       </div>
-      <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
+      <div class="project-card" style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
         <img src="assets/projects/nl-analytics-cover.png" alt="Abstract operational analytics dashboard visual" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.02 — applied AI</div>
@@ -203,7 +214,7 @@ a:hover { color: var(--accent, #00b3cc); }
           </div>
         </div>
       </div>
-      <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
+      <div class="project-card" style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
         <img src="assets/projects/correlai-cover.png" alt="Synthetic alarm correlation graph visual" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.03 — public ML experiment</div>
@@ -215,7 +226,7 @@ a:hover { color: var(--accent, #00b3cc); }
           </div>
         </div>
       </div>
-      <div style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
+      <div class="project-card" style="display: flex; flex-direction: column; border: 1px solid #e0dac7; background: #fdfbf4; min-height: 0; transition: border-color .25s ease;" style-hover="border: 1px solid var(--accent, #00b3cc);">
         <img src="assets/projects/wasm-rag-cover.png" alt="Document chunks flowing into local vector search" loading="lazy" style="display: block; width: 100%; flex: 1; min-height: 90px; object-fit: cover; object-position: center; border-bottom: 1px solid #e0dac7;">
         <div style="padding: 16px 20px 18px;">
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 7px;">proj.04 — edge AI</div>
@@ -248,23 +259,23 @@ a:hover { color: var(--accent, #00b3cc); }
           <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6a7276; border: 1px solid #c9c2ae; padding: 9px 12px; white-space: nowrap;">Mar–Oct 2024</span>
         </div>
 
-        <div inert data-mq="hw-project-grid" style="display: grid; grid-template-columns: 1.35fr .65fr; min-height: 440px;">
+        <div data-mq="hw-project-grid" style="display: grid; grid-template-columns: 1.35fr .65fr; min-height: 440px;">
           <div style="padding: 30px; border-right: 1px solid #d8d1bd;">
             <div data-mq="hw-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; height: 100%;">
-              <button class="hw-trigger" data-hw-trigger="transmitter" aria-controls="hw-transmitter" style="position: relative; overflow: hidden; min-height: 355px; padding: 0; text-align: left; cursor: pointer; border: 1px solid #e0dac7; background: #fff;">
+              <div class="hw-trigger" style="position: relative; overflow: hidden; min-height: 355px; padding: 0; text-align: left; cursor: pointer; border: 1px solid #e0dac7; background: #fff;">
                 <img src="assets/hw-board.png" alt="ESP32 infrared transmitter prototype" style="display: block; width: 100%; height: 270px; object-fit: contain; padding: 18px; box-sizing: border-box;">
                 <span style="display: block; border-top: 1px solid #e0dac7; padding: 16px 18px;">
                   <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--accent-text, #04788e); margin-bottom: 5px;">01 / ceiling node</span>
                   <strong style="display: flex; justify-content: space-between; gap: 14px; font-size: 17px; font-weight: 600;">IR Transmitter <span aria-hidden="true">↘</span></strong>
                 </span>
-              </button>
-              <button class="hw-trigger" data-hw-trigger="receiver" aria-controls="hw-receiver" style="position: relative; overflow: hidden; min-height: 355px; padding: 0; text-align: left; cursor: pointer; border: 1px solid #e0dac7; background: #fff;">
+              </div>
+              <div class="hw-trigger" style="position: relative; overflow: hidden; min-height: 355px; padding: 0; text-align: left; cursor: pointer; border: 1px solid #e0dac7; background: #fff;">
                 <img src="assets/hw-rx-board.png" alt="ESP32 infrared receiver prototype" style="display: block; width: 100%; height: 270px; object-fit: contain; padding: 18px; box-sizing: border-box;">
                 <span style="display: block; border-top: 1px solid #e0dac7; padding: 16px 18px;">
                   <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--accent-text, #04788e); margin-bottom: 5px;">02 / cart node</span>
                   <strong style="display: flex; justify-content: space-between; gap: 14px; font-size: 17px; font-weight: 600;">IR Receiver <span aria-hidden="true">↘</span></strong>
                 </span>
-              </button>
+              </div>
             </div>
           </div>
 
@@ -272,235 +283,15 @@ a:hover { color: var(--accent, #00b3cc); }
             <div>
               <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83; margin-bottom: 14px;">// one project · two physical nodes</div>
               <p style="margin: 0 0 18px; font-size: 17px; line-height: 1.55; color: #33393c;">I designed the infrared pipeline, embedded firmware, modular architecture, hardware schematics, prototypes and custom 3D-printed enclosures.</p>
-              <p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #6a7276;">Select the system or either device to inspect how the parts connect and how each prototype was built.</p>
+              <p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #6a7276;">Explore the complete build: system architecture, working prototypes and the design behind each device.</p>
             </div>
-            <button class="hw-trigger" data-hw-trigger="system" aria-controls="hw-system" style="width: 100%; padding: 14px 16px; cursor: pointer; border: 1px solid var(--accent, #00b3cc); background: transparent; color: var(--accent-text, #04788e); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; text-align: left; display: flex; justify-content: space-between; gap: 14px;">
+            <div class="hw-trigger" style="width: 100%; padding: 14px 16px; cursor: pointer; border: 1px solid var(--accent, #00b3cc); background: transparent; color: var(--accent-text, #04788e); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; text-align: left; display: flex; justify-content: space-between; gap: 14px;">
               <span>OPEN FULL CASE STUDY</span><span aria-hidden="true">↗</span>
-            </button>
+            </div>
           </div>
         </div>
 
-        <div hidden aria-hidden="true" data-mq="hw-selector" role="tablist" aria-label="Indoor Tracking System details" style="display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #d8d1bd; border-bottom: 1px solid #d8d1bd;">
-          <button class="hw-trigger" data-hw-trigger="system" data-hw-tab="true" role="tab" aria-selected="true" aria-controls="hw-system" style="padding: 17px 20px; border: 0; border-right: 1px solid #d8d1bd; background: rgba(0,179,204,.07); cursor: pointer; text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--accent-text, #04788e); margin-right: 8px;">01</span>System schema</button>
-          <button class="hw-trigger" data-hw-trigger="transmitter" data-hw-tab="true" role="tab" aria-selected="false" aria-controls="hw-transmitter" style="padding: 17px 20px; border: 0; border-right: 1px solid #d8d1bd; background: transparent; cursor: pointer; text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--accent-text, #04788e); margin-right: 8px;">02</span>Transmitter</button>
-          <button class="hw-trigger" data-hw-trigger="receiver" data-hw-tab="true" role="tab" aria-selected="false" aria-controls="hw-receiver" style="padding: 17px 20px; border: 0; background: transparent; cursor: pointer; text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;"><span style="color: var(--accent-text, #04788e); margin-right: 8px;">03</span>Receiver</button>
-        </div>
-
-        <div id="hwDetailArea" hidden aria-hidden="true" aria-live="polite">
-          <section class="hw-panel" id="hw-system" data-hw-panel="system" role="tabpanel" style="padding: 30px;">
-            <div data-mq="hw-detail-grid" style="display: grid; grid-template-columns: .9fr 1.1fr; gap: 42px; align-items: center;">
-              <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 18px;">
-                <img src="assets/sketch-schematic.png" alt="Indoor Tracking System schematic showing transmitter, receiver, server and notification" style="display: block; width: 100%; height: 390px; object-fit: contain;">
-                <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83; margin-top: 12px;">fig.01 — original system schematic</figcaption>
-              </figure>
-              <div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 12px;">SYSTEM / END-TO-END FLOW</div>
-                <h4 style="margin: 0 0 14px; font-size: 25px; font-weight: 600;">From a physical zone to a digital event</h4>
-                <p style="margin: 0 0 24px; font-size: 15px; line-height: 1.7; color: #5b6367;">The ceiling transmitter emits a coded infrared beacon over a predefined area. When the receiver on the shopping cart enters that area, it detects the beacon, timestamps the event and sends it over Wi-Fi. The backend can then associate the event with a zone and support notifications and movement-pattern analysis.</p>
-                <div style="display: grid; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #33393c;">
-                  <div style="display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid #e4decd;"><span style="color: var(--accent-text, #04788e);">01</span><span>Transmitter defines the infrared zone</span></div>
-                  <div style="display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid #e4decd;"><span style="color: var(--accent-text, #04788e);">02</span><span>Receiver detects entry and sends an event</span></div>
-                  <div style="display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid #e4decd;"><span style="color: var(--accent-text, #04788e);">03</span><span>Backend supports notification and analysis workflows</span></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="hw-panel" id="hw-transmitter" data-hw-panel="transmitter" role="tabpanel" hidden style="padding: 30px;">
-            <div data-mq="hw-detail-grid" style="display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: start;">
-              <div>
-                <figure style="margin: 0 0 16px; border: 1px solid #e0dac7; background: #fff; padding: 18px;"><img src="assets/hw-board.png" alt="IR transmitter board in detail" style="display: block; width: 100%; height: 330px; object-fit: contain;"><figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83; margin-top: 10px;">prototype — ESP32 transmitter on perfboard</figcaption></figure>
-                <div data-mq="hw-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                  <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 12px;"><img src="assets/hw-enclosure.png" alt="3D-printed transmitter enclosure" style="display: block; width: 100%; height: 150px; object-fit: contain;"><figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b8f83; margin-top: 8px;">custom FDM enclosure</figcaption></figure>
-                  <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 12px;"><img src="assets/sketch-transmitter.png" alt="Early transmitter enclosure sketch" style="display: block; width: 100%; height: 150px; object-fit: contain;"><figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b8f83; margin-top: 8px;">first enclosure sketch</figcaption></figure>
-                </div>
-              </div>
-              <div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 12px;">NODE 01 / TRANSMITTER</div>
-                <h4 style="margin: 0 0 14px; font-size: 25px; font-weight: 600;">The invisible boundary</h4>
-                <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.7; color: #33393c;">Mounted on the ceiling, the transmitter floods a cone-shaped zone with a coded 940nm infrared beacon.</p>
-                <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.7; color: #6a7276;">I designed the circuit and driver stage on perfboard, wrote the embedded beacon-control firmware and developed the custom 3D-printed enclosure.</p>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.6; border-top: 1px solid #e4decd;">
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">mcu</span><span>ESP32-WROOM-32</span></div>
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">driver</span><span>2N2222 NPN + current-limiting resistor</span></div>
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">emitter</span><span>940nm IR LED</span></div>
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">enclosure</span><span>Custom FDM 3D print</span></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="hw-panel" id="hw-receiver" data-hw-panel="receiver" role="tabpanel" hidden style="padding: 30px;">
-            <div data-mq="hw-detail-grid" style="display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: start;">
-              <div>
-                <figure style="margin: 0 0 16px; border: 1px solid #e0dac7; background: #fff; padding: 18px;"><img src="assets/hw-rx-board.png" alt="IR receiver board in detail" style="display: block; width: 100%; height: 330px; object-fit: contain;"><figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83; margin-top: 10px;">prototype — wireless ESP32 receiver</figcaption></figure>
-                <div data-mq="hw-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                  <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 12px;"><img src="assets/hw-rx-enclosure.png" alt="Receiver enclosure with internal battery" style="display: block; width: 100%; height: 150px; object-fit: contain;"><figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b8f83; margin-top: 8px;">battery and hook-on enclosure</figcaption></figure>
-                  <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 12px;"><img src="assets/sketch-receiver.png" alt="Early receiver enclosure sketch" style="display: block; width: 100%; height: 150px; object-fit: contain;"><figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8b8f83; margin-top: 8px;">first receiver sketch</figcaption></figure>
-                </div>
-              </div>
-              <div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--accent-text, #04788e); margin-bottom: 12px;">NODE 02 / RECEIVER</div>
-                <h4 style="margin: 0 0 14px; font-size: 25px; font-weight: 600;">The mobile sensing node</h4>
-                <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.7; color: #33393c;">Attached to the shopping cart, the receiver detects the infrared beacon when it crosses into a tracked zone, timestamps the event and sends it over Wi-Fi.</p>
-                <p style="margin: 0 0 24px; font-size: 14px; line-height: 1.7; color: #6a7276;">I designed the sensing and power circuit, battery supply, embedded firmware and uplink, plus the hooked enclosure used to mount the node to the cart.</p>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.6; border-top: 1px solid #e4decd;">
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">mcu</span><span>ESP32-WROOM-32</span></div>
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">sensor</span><span>38kHz infrared receiver module</span></div>
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">power</span><span>Li-ion cell + rocker switch</span></div>
-                  <div style="display: grid; grid-template-columns: 88px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">uplink</span><span>Wi-Fi → backend event</span></div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
       </article>
-
-      <div aria-hidden="true" hidden data-reveal="true" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 38px; padding: 20px 0;">
-        <div style="border: 1px solid #c9c2ae; padding: 10px 16px; text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;">TRANSMITTER</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">ceiling</div></div>
-        <div style="text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">ir beacon</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-text, #04788e);">──▸</div></div>
-        <div style="border: 1px solid #c9c2ae; padding: 10px 16px; text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;">RECEIVER</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">on the cart</div></div>
-        <div style="text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">wi-fi</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-text, #04788e);">──▸</div></div>
-        <div style="border: 1px solid #c9c2ae; padding: 10px 16px; text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;">SERVER</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">events api</div></div>
-        <div style="text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">push</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-text, #04788e);">──▸</div></div>
-        <div style="border: 1px solid #c9c2ae; padding: 10px 16px; text-align: center;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500;">SMARTPHONE</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8b8f83;">notification</div></div>
-      </div>
-      <div aria-hidden="true" hidden data-reveal="true">
-      <div data-mq="carousel" style="display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: 26px;">
-        <span id="hwCounter" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8b8f83; margin-right: 8px;">01 / 03</span>
-        <button id="hwPrev" style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #191d1f; background: transparent; border: 1px solid #c9c2ae; padding: 8px 16px; cursor: pointer; transition: all .2s;" style-hover="border: 1px solid var(--accent, #00b3cc); color: var(--accent-text, #04788e);">←</button>
-        <button id="hwNext" style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #191d1f; background: transparent; border: 1px solid #c9c2ae; padding: 8px 16px; cursor: pointer; transition: all .2s;" style-hover="border: 1px solid var(--accent, #00b3cc); color: var(--accent-text, #04788e);">→</button>
-      </div>
-      <div style="position: relative; overflow: hidden; width: 100vw; margin-left: calc(50% - 50vw);">
-      <div class="hw-slide" data-slide="0" style="top: 0; width: min(1000px, 86vw); left: 50%; background: transparent; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: relative; transform: translateX(-50%); opacity: 1; z-index: 3;">
-      <div data-mq="stack" style="display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: start;">
-        <div>
-          <div id="hwBoard1" style="position: relative; border: 1px solid #e0dac7; background: #ffffff; padding: 26px; cursor: crosshair;">
-            <img src="assets/hw-board.png" alt="SmartIR Node — ESP32 board on perfboard" style="display: block; width: 100%; height: auto;">
-            <div id="hwPins1" style="position: absolute; inset: 26px; pointer-events: none; transition: opacity .35s ease; opacity: 0;">
-              <div style="position: absolute; left: 69%; top: 47%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: 14px; top: -10px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">ESP32-WROOM-32</div>
-              </div>
-              <div style="position: absolute; left: 81%; top: 10%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; right: 14px; top: 16px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">millefori proto board</div>
-              </div>
-              <div style="position: absolute; left: 10%; top: 9%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: 14px; top: -10px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">5V screw terminal</div>
-              </div>
-              <div style="position: absolute; left: 19%; top: 94%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: -24px; top: 14px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">current-limiting R</div>
-              </div>
-              <div style="position: absolute; left: 32%; top: 92%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: -20px; top: -36px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">2N2222 driver</div>
-              </div>
-              <div style="position: absolute; left: 41%; top: 89%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: 12px; top: 14px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">IR LED · 940nm</div>
-              </div>
-            </div>
-            <div id="hwHint1" style="position: absolute; left: 26px; bottom: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83; background: rgba(255,255,255,.85); padding: 3px 8px; transition: opacity .35s ease; opacity: 1;">hover to inspect components</div>
-          </div>
-          <div style="display: flex; gap: 20px; margin-top: 20px; align-items: center;">
-            <img src="assets/hw-enclosure.png" alt="Custom 3D-printed enclosure" style="display: block; width: 46%; border: 1px solid #e0dac7; background: #fff;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.9; color: #6a7276;">custom 3D-printed<br>enclosure · FDM</div>
-          </div>
-        </div>
-        <div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e); margin-bottom: 12px;">hw.01 — transmitter · bachelor's thesis · 2024</div>
-          <h3 style="margin: 0 0 16px; font-size: 26px; font-weight: 600; letter-spacing: -0.01em;">IR Transmitter</h3>
-          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #33393c; text-wrap: pretty;">Mounted on the ceiling, it floods a cone-shaped zone with a coded 940nm infrared beacon — the invisible boundary the whole system is built on.</p>
-          <p style="margin: 0 0 28px; font-size: 14.5px; line-height: 1.65; color: #6a7276;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e);">designed by me —</span> circuit and driver stage on perfboard, embedded firmware, and the 3D-printed enclosure.</p>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #33393c; border-top: 1px solid #e4decd;">
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">mcu</span><span>ESP32-WROOM-32 · Wi-Fi + BT</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">driver</span><span>2N2222 NPN + current-limiting resistor</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">emitter</span><span>940nm IR LED</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">power</span><span>5V via screw terminal · mains adapter</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">firmware</span><span>Embedded C · infrared beacon control</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">result</span><span>Working illuminator prototype and custom enclosure</span></div>
-          </div>
-          <div style="margin-top: 28px;">
-            <span style="display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6a7276; border: 1px solid #c9c2ae; padding: 10px 16px;">Indoor Tracking System · Mar–Oct 2024</span>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="hw-slide" data-slide="1" style="top: 0; width: min(1000px, 86vw); left: 50%; background: transparent; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: absolute; transform: translateX(62%) scale(.88); opacity: .35; z-index: 1; cursor: pointer;">
-      <div data-mq="stack" style="display: grid; grid-template-columns: .95fr 1.05fr; gap: 64px; align-items: start;">
-        <div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e); margin-bottom: 12px;">hw.02 — receiver · bachelor's thesis · 2024</div>
-          <h3 style="margin: 0 0 16px; font-size: 26px; font-weight: 600; letter-spacing: -0.01em;">IR Receiver</h3>
-          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.65; color: #33393c; text-wrap: pretty;">Rides on the shopping cart. When it crosses the transmitter's beacon it timestamps the event and ships it over Wi-Fi — the server turns it into a push notification.</p>
-          <p style="margin: 0 0 28px; font-size: 14.5px; line-height: 1.65; color: #6a7276;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e);">designed by me —</span> sensing and power circuit, battery supply with hard switch, firmware and uplink, plus the hooked enclosure that clips onto the cart.</p>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #33393c; border-top: 1px solid #e4decd;">
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">mcu</span><span>ESP32-WROOM-32 · Wi-Fi + BT</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">sensor</span><span>38kHz infrared receiver module</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">power</span><span>Li-ion cell + rocker switch · fully wireless</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">uplink</span><span>Wi-Fi → server → push notification</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">enclosure</span><span>FDM 3D print · mounting hook + tab</span></div>
-            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid #e4decd;"><span style="color: #8b8f83;">result</span><span>Working wireless receiver prototype with zone-entry events</span></div>
-          </div>
-          <div style="margin-top: 28px;">
-            <span style="display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6a7276; border: 1px solid #c9c2ae; padding: 10px 16px;">Prototype, schematics and technical documentation</span>
-          </div>
-        </div>
-        <div>
-          <div id="hwBoard2" style="position: relative; border: 1px solid #e0dac7; background: #ffffff; padding: 26px; cursor: crosshair;">
-            <div style="position: relative; width: 78%; margin: 0 auto;">
-            <img src="assets/hw-rx-board.png" alt="IR Receiver — ESP32 board with IR sensor" style="display: block; width: 100%; height: auto;">
-            <div id="hwPins2" style="position: absolute; inset: 0; pointer-events: none; transition: opacity .35s ease; opacity: 0;">
-              <div style="position: absolute; left: 33%; top: 10%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: 14px; top: -10px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">38kHz IR receiver</div>
-              </div>
-              <div style="position: absolute; left: 64%; top: 55%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: 14px; top: -10px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">ESP32-WROOM-32</div>
-              </div>
-              <div style="position: absolute; left: 20%; top: 54%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; right: 14px; top: -10px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">micro-USB · flashing</div>
-              </div>
-              <div style="position: absolute; left: 25%; top: 87%;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #00b3cc); border: 2px solid #fff; box-shadow: 0 0 0 3px rgba(0,179,204,.25); transform: translate(-50%,-50%);"></div>
-                <div style="position: absolute; left: 12px; top: 14px; background: #12181c; color: #dcebee; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 8px; white-space: nowrap;">millefori proto board</div>
-              </div>
-            </div>
-            </div>
-            <div id="hwHint2" style="position: absolute; left: 26px; bottom: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83; background: rgba(255,255,255,.85); padding: 3px 8px; transition: opacity .35s ease; opacity: 1;">hover to inspect components</div>
-          </div>
-          <div style="display: flex; gap: 20px; margin-top: 20px; align-items: center;">
-            <img src="assets/hw-rx-enclosure.png" alt="Receiver enclosure — Li-ion battery inside, mounting tab and hook" style="display: block; width: 62%; border: 1px solid #e0dac7; background: #fff;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.9; color: #6a7276;">li-ion inside ·<br>hook-on enclosure ·<br>FDM print</div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="hw-slide" data-slide="2" style="top: 0; width: min(1000px, 86vw); left: 50%; background: transparent; transition: transform .6s cubic-bezier(.25,.7,.25,1), opacity .6s ease; position: absolute; transform: translateX(-162%) scale(.88); opacity: .35; z-index: 1; cursor: pointer;">
-      <div style="padding: 10px 0 30px;">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent-text, #04788e); margin-bottom: 20px;">// from the build log — early sketches</div>
-        <div data-mq="stack" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; align-items: stretch;">
-          <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 14px; display: flex; flex-direction: column;">
-            <img src="assets/sketch-schematic.png" alt="System schematic sketch — transmitter cone, cart receiver, server, push" style="display: block; width: 100%; height: 240px; object-fit: contain; flex: 1;">
-            <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83; margin-top: 10px;">fig.01 — system schematic: cone, cart, server, push</figcaption>
-          </figure>
-          <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 14px; display: flex; flex-direction: column;">
-            <img src="assets/sketch-receiver.png" alt="Receiver enclosure sketch" style="display: block; width: 100%; height: 240px; object-fit: contain; flex: 1;">
-            <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83; margin-top: 10px;">fig.02 — receiver, first sketch</figcaption>
-          </figure>
-          <figure style="margin: 0; border: 1px solid #e0dac7; background: #fff; padding: 14px; display: flex; flex-direction: column;">
-            <img src="assets/sketch-transmitter.png" alt="Transmitter enclosure sketch" style="display: block; width: 100%; height: 240px; object-fit: contain; flex: 1;">
-            <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8b8f83; margin-top: 10px;">fig.03 — transmitter, first sketch</figcaption>
-          </figure>
-        </div>
-      </div>
-      </div>
-      </div>
-      </div>
     </div>
   </section>
 
@@ -574,7 +365,6 @@ a:hover { color: var(--accent, #00b3cc); }
         <a href="https://github.com/LorenzoMascia" target="_blank" rel="noopener" style="color: #6a7276; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">GitHub</a>
         <a href="https://www.linkedin.com/in/lorenzo-mascia" target="_blank" rel="noopener" style="color: #6a7276; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">LinkedIn</a>
         <a href="https://howai.cloud" target="_blank" rel="noopener" style="color: #6a7276; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">howai.cloud</a>
-        <a href="https://www.linkedin.com/in/lorenzo-mascia" target="_blank" rel="noopener" style="color: #6a7276; text-decoration: none;" style-hover="color: var(--accent-text, #04788e);">profile</a>
       </div>
     </div>
   </section>
@@ -582,7 +372,7 @@ a:hover { color: var(--accent, #00b3cc); }
   <footer style="border-top: 1px solid #e4decd;">
     <div data-mq="wraprow" style="max-width: 1100px; margin: 0 auto; padding: 26px 22px; display: flex; justify-content: space-between; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #8b8f83;">
       <span>© 2026 Lorenzo Mascia · designed and developed as an interactive portfolio</span>
-      <span>v1.0.0 · there's a SYSTEM MODE up there ↑</span>
+      <span><button class="motion-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◌</span><span class="motion-label">Motion on</span></button><span>v2.0 · built to connect the dots</span></span>
     </div>
   </footer>
 
@@ -591,389 +381,18 @@ a:hover { color: var(--accent, #00b3cc); }
     <button id="sectionDown" title="Next section" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 17px; color: #191d1f; background: rgba(246,243,234,.92); backdrop-filter: blur(6px); border: 1px solid #c9c2ae; cursor: pointer; transition: all .2s;" style-hover="border: 1px solid var(--accent, #00b3cc); color: var(--accent-text, #04788e);">↓</button>
   </div>
 
-  <div id="systemOverlay" style="display: none; position: fixed; inset: 0; z-index: 200; background: #0a1014;">
-    <canvas id="systemCanvas" style="position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair;"></canvas>
+  <div id="systemOverlay" role="dialog" aria-modal="true" aria-label="Interactive map of my work" tabindex="-1" style="display: none; position: fixed; inset: 0; z-index: 200; background: #0a1014;">
+    <canvas id="systemCanvas" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair;"></canvas>
     <div style="position: absolute; top: 26px; left: 32px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #7d8c94; pointer-events: none; line-height: 1.9;">
-      <span style="color: var(--accent, #00b3cc);">● SYSTEM MODE</span> — v1.0<br>hover a node · click to navigate
+      <span style="color: var(--accent, #00b3cc);">● SYSTEM MODE</span> — v2.0<br>explore the connections · choose a destination
     </div>
     <button id="closeSystemBtn" style="position: absolute; top: 26px; right: 32px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .08em; color: #aebfc6; background: transparent; border: 1px solid #2b3a41; padding: 9px 15px; cursor: pointer;" style-hover="color: #0a1014; background: var(--accent, #00b3cc); border: 1px solid var(--accent, #00b3cc);">[ESC] EXIT</button>
+    <div class="system-navigation" aria-label="System destinations">
+      <a href="#software">AI + Software ↗</a><a href="#hardware">Hardware ↗</a><a href="#experiments">Experiments ↗</a><a href="#writing">Writing ↗</a>
+    </div>
   </div>
 </div>
 
-<script>
-/*
- * Portfolio.dc.html — standalone implementation.
- * Ports the Claude Design Compiler component (DCLogic) to vanilla JS:
- * accent theming, typed terminal, scroll reveal, magnet buttons,
- * style-hover, experience tabs, hardware case-study controls, and SYSTEM MODE graph.
- */
-(function () {
-  // ---- props (from the design's data-props defaults) ----
-  var PROPS = { accent: '#00b3cc', animations: true, systemNodes: 12 };
-
-  // ---- accent theming ----
-  function applyAccent() {
-    var a = PROPS.accent;
-    var r = document.documentElement.style;
-    r.setProperty('--accent', a);
-    r.setProperty('--accent-text', 'color-mix(in oklch, ' + a + ' 68%, #05343d)');
-  }
-  applyAccent();
-
-  // ---- style-hover shim ----
-  document.querySelectorAll('[style-hover]').forEach(function (el) {
-    var decls = el.getAttribute('style-hover').split(';').map(function (d) {
-      var i = d.indexOf(':');
-      if (i < 0) return null;
-      return { prop: d.slice(0, i).trim(), val: d.slice(i + 1).trim() };
-    }).filter(Boolean);
-    var saved = null;
-    el.addEventListener('mouseenter', function () {
-      saved = decls.map(function (d) { return el.style.getPropertyValue(d.prop); });
-      decls.forEach(function (d) { el.style.setProperty(d.prop, d.val); });
-    });
-    el.addEventListener('mouseleave', function () {
-      if (!saved) return;
-      decls.forEach(function (d, i) {
-        if (saved[i]) el.style.setProperty(d.prop, saved[i]);
-        else el.style.removeProperty(d.prop);
-      });
-    });
-  });
-
-  // ---- typed terminal ----
-  var typedEl = document.getElementById('typed');
-  var full = './lorenzo --stack ai · software · hardware';
-  if (PROPS.animations) {
-    var i = 0;
-    var typeTimer = setInterval(function () {
-      i++;
-      typedEl.textContent = full.slice(0, i);
-      if (i >= full.length) clearInterval(typeTimer);
-    }, 42);
-  } else {
-    typedEl.textContent = full;
-  }
-
-  // ---- scroll reveal ----
-  if (PROPS.animations && 'IntersectionObserver' in window) {
-    requestAnimationFrame(function () {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.style.opacity = '1';
-            e.target.style.transform = 'none';
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('[data-reveal]').forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight * 0.85) return;
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1)';
-        io.observe(el);
-      });
-    });
-  }
-
-  // ---- magnet buttons ----
-  document.querySelectorAll('[data-magnet]').forEach(function (el) {
-    el.addEventListener('mousemove', function (ev) {
-      var r = el.getBoundingClientRect();
-      var dx = (ev.clientX - r.left - r.width / 2) / r.width;
-      var dy = (ev.clientY - r.top - r.height / 2) / r.height;
-      el.style.transform = 'translate(' + (dx * 7).toFixed(1) + 'px, ' + (dy * 5).toFixed(1) + 'px)';
-    });
-    el.addEventListener('mouseleave', function () { el.style.transform = 'translate(0,0)'; });
-  });
-
-  // ---- experience tabs ----
-  var tabData = [
-    {
-      label: 'Ericsson',
-      role: 'Product Developer · Ericsson',
-      meta: 'Jul 2025 — Present · Naples, Italy',
-      bullets: [
-        'Contribute to product development for telecom and network-operations software.',
-        'Work on machine-learning systems for alarm correlation and root-cause-analysis workflows.',
-        'Contribute to generative-AI experiences for exploring operational data through natural-language interactions and dashboards.'
-      ]
-    },
-    {
-      label: 'Ericsson Intern',
-      role: 'Integration Engineer Intern · Ericsson',
-      meta: 'Jan 2025 — Jun 2025 · Naples, Italy',
-      bullets: [
-        'Supported software integration and validation in a production telecom environment.',
-        'Progressed from a six-month internship to a permanent Product Developer position.'
-      ]
-    },
-    {
-      label: 'International',
-      role: 'Exchange Program · Madrid and Porto',
-      meta: 'UPM ETSIDI 2022–2023 · FEUP 2026',
-      bullets: [
-        'Completed a full academic year at ETSIDI, Universidad Politécnica de Madrid, during my bachelor\'s degree.',
-        'Completed a master\'s exchange at the Faculty of Engineering of the University of Porto alongside full-time work, travelling to Porto for academic activities and assessments.'
-      ]
-    },
-    {
-      label: 'Education',
-      role: 'Management Engineering · Parthenope',
-      meta: 'BSc completed 2024 · MSc 2024 — Present',
-      bullets: [
-        'Master\'s degree focused on the technical and managerial design of complex industrial and energy systems.',
-        'Bachelor\'s thesis: Indoor Tracking System for Retail Customers — an end-to-end IoT, localization and behavioral-clustering prototype.',
-        'Completed a curricular internship connected to the experimental thesis, covering hardware, embedded firmware, backend events and technical documentation.'
-      ]
-    }
-  ];
-  var baseTab = 'font-family: \'IBM Plex Mono\', monospace; font-size: 13px; letter-spacing: .04em; text-align: left; padding: 13px 20px; background: transparent; border: none; border-left: 2px solid #e4decd; color: #5b6367; cursor: pointer; transition: all .2s;';
-  var activeTab = 'font-family: \'IBM Plex Mono\', monospace; font-size: 13px; letter-spacing: .04em; text-align: left; padding: 13px 20px; border: none; cursor: pointer; transition: all .2s; border-left: 2px solid ' + PROPS.accent + '; color: #191d1f; background: rgba(0,179,204,.06);';
-  var curTab = 0;
-  var tabsHost = document.getElementById('expTabs');
-  var roleEl = document.getElementById('expRole');
-  var metaEl = document.getElementById('expMeta');
-  var bulletsEl = document.getElementById('expBullets');
-
-  tabData.forEach(function (d, idx) {
-    var b = document.createElement('button');
-    b.textContent = d.label;
-    b.addEventListener('click', function () { setTab(idx); });
-    tabsHost.appendChild(b);
-  });
-
-  function setTab(t) {
-    curTab = t;
-    Array.prototype.forEach.call(tabsHost.children, function (btn, idx) {
-      btn.setAttribute('style', idx === t ? activeTab : baseTab);
-    });
-    var d = tabData[t];
-    roleEl.textContent = d.role;
-    metaEl.textContent = d.meta;
-    bulletsEl.innerHTML = '';
-    d.bullets.forEach(function (text) {
-      var row = document.createElement('div');
-      row.setAttribute('style', 'display: flex; gap: 14px; font-size: 15.5px; line-height: 1.65; color: #33393c; max-width: 640px;');
-      var mark = document.createElement('span');
-      mark.setAttribute('style', 'color: var(--accent, #00b3cc); flex-shrink: 0; margin-top: 1px;');
-      mark.textContent = '▹';
-      var span = document.createElement('span');
-      span.textContent = text;
-      row.appendChild(mark);
-      row.appendChild(span);
-      bulletsEl.appendChild(row);
-    });
-  }
-  setTab(0);
-
-  // ---- interactive hardware case study ----
-  var hwTriggers = document.querySelectorAll('[data-hw-trigger]');
-  var hwPanels = document.querySelectorAll('[data-hw-panel]');
-
-  function setHardwareView(view) {
-    hwPanels.forEach(function (panel) {
-      panel.hidden = panel.getAttribute('data-hw-panel') !== view;
-    });
-    hwTriggers.forEach(function (trigger) {
-      var active = trigger.getAttribute('data-hw-trigger') === view;
-      trigger.setAttribute('aria-selected', active ? 'true' : 'false');
-      if (trigger.hasAttribute('data-hw-tab')) {
-        trigger.style.background = active ? 'rgba(0,179,204,.07)' : 'transparent';
-        trigger.style.color = active ? '#191d1f' : '#5b6367';
-      } else {
-        trigger.style.borderColor = active ? 'var(--accent, #00b3cc)' : '#e0dac7';
-      }
-    });
-  }
-
-  hwTriggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
-      setHardwareView(trigger.getAttribute('data-hw-trigger'));
-    });
-  });
-  setHardwareView('system');
-
-  // ---- section step navigation ----
-  var sectionIds = ['top', 'about', 'experience', 'software', 'hardware', 'experiments', 'writing', 'contact'];
-  function goto(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var nav = document.querySelector('nav');
-    var navHeight = nav ? nav.getBoundingClientRect().height : 0;
-    var target = el.getBoundingClientRect().top + window.scrollY - navHeight / 2;
-    window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
-  }
-  function sectionStep(dir) {
-    var y = window.scrollY + window.innerHeight / 2;
-    var cur = 0;
-    sectionIds.forEach(function (id, i) {
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top + window.scrollY <= y) cur = i;
-    });
-    var next = Math.max(0, Math.min(sectionIds.length - 1, cur + dir));
-    if (next === 0) window.scrollTo({ top: 0, behavior: 'smooth' });
-    else goto(sectionIds[next]);
-  }
-  document.getElementById('sectionUp').addEventListener('click', function () { sectionStep(-1); });
-  document.getElementById('sectionDown').addEventListener('click', function () { sectionStep(1); });
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function (event) {
-      var id = link.getAttribute('href').slice(1);
-      if (sectionIds.indexOf(id) === -1) return;
-      event.preventDefault();
-      goto(id);
-    });
-  });
-  if (location.hash && sectionIds.indexOf(location.hash.slice(1)) !== -1) {
-    requestAnimationFrame(function () { goto(location.hash.slice(1)); });
-  }
-
-  // ---- SYSTEM MODE ----
-  var overlay = document.getElementById('systemOverlay');
-  var canvas = document.getElementById('systemCanvas');
-  var sim = { raf: 0, cleanup: null };
-
-  function openSystem() { overlay.style.display = 'block'; document.body.style.overflow = 'hidden'; startSim(); }
-  function closeSystem() { stopSim(); overlay.style.display = 'none'; document.body.style.overflow = ''; }
-
-  function stopSim() {
-    cancelAnimationFrame(sim.raf);
-    if (sim.cleanup) { sim.cleanup(); sim.cleanup = null; }
-  }
-
-  function startSim() {
-    stopSim();
-    var ctx = canvas.getContext('2d');
-    var accent = PROPS.accent;
-    var hexA = function (hex, a) {
-      var n = parseInt(hex.slice(1), 16);
-      return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
-    };
-    var dpr = window.devicePixelRatio || 1;
-    var fit = function () { canvas.width = canvas.offsetWidth * dpr; canvas.height = canvas.offsetHeight * dpr; };
-    fit();
-    var W = function () { return canvas.width / dpr; };
-    var H = function () { return canvas.height / dpr; };
-    var hubs = [
-      { label: 'AI', t: 'software', fx: .30, fy: .34 },
-      { label: 'SOFTWARE', t: 'software', fx: .68, fy: .28 },
-      { label: 'HARDWARE', t: 'hardware', fx: .32, fy: .72 },
-      { label: 'RESEARCH', t: 'writing', fx: .70, fy: .68 }
-    ];
-    var sats = [
-      ['NL Analytics Dashboard', 0, 'software'], ['CorrelAI', 0, 'software'], ['WASM RAG', 0, 'software'],
-      ['LifeQuest / QuestCore', 1, 'software'], ['NL2Py', 1, 'experiments'], ['LLM Distillery', 1, 'experiments'],
-      ['Cloud Rush', 1, 'experiments'], ['IR Transmitter', 2, 'hardware'], ['IR Receiver', 2, 'hardware'],
-      ['Vinted AutoLister', 1, 'experiments'], ['howai.cloud', 3, 'writing'], ['Indoor Tracking', 2, 'hardware']
-    ].slice(0, Math.round(PROPS.systemNodes));
-    var nodes = hubs.map(function (h) { return { label: h.label, t: h.t, fx: h.fx, fy: h.fy, hub: true, r: 8, x: h.fx * W(), y: h.fy * H(), vx: 0, vy: 0 }; });
-    sats.forEach(function (s, i) {
-      var p = nodes[s[1]];
-      var a = i * 2.399 + s[1] * 1.3;
-      var d = 105 + (i % 3) * 48;
-      nodes.push({ label: s[0], t: s[2], hub: false, r: 4.5, parent: s[1], ang: a, dist: d, x: p.x + Math.cos(a) * d, y: p.y + Math.sin(a) * d, vx: 0, vy: 0 });
-    });
-    var mouse = { x: -9999, y: -9999 };
-    var hovered = null;
-    var onMove = function (e) { var r = canvas.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; };
-    var onClick = function () {
-      if (hovered) { var t = hovered.t; closeSystem(); setTimeout(function () { goto(t); }, 80); }
-    };
-    canvas.addEventListener('mousemove', onMove);
-    canvas.addEventListener('click', onClick);
-    window.addEventListener('resize', fit);
-    sim.cleanup = function () {
-      canvas.removeEventListener('mousemove', onMove);
-      canvas.removeEventListener('click', onClick);
-      window.removeEventListener('resize', fit);
-    };
-    var line = function (a, b) { ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); };
-    var step = function (now) {
-      var t = now / 1000;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.fillStyle = '#0a1014';
-      ctx.fillRect(0, 0, W(), H());
-      nodes.forEach(function (n, i) {
-        var ax, ay;
-        if (n.hub) {
-          ax = n.fx * W() + Math.sin(t * .5 + i * 2.1) * 12;
-          ay = n.fy * H() + Math.cos(t * .4 + i * 1.7) * 12;
-        } else {
-          var p = nodes[n.parent];
-          var a = n.ang + t * .06;
-          ax = p.x + Math.cos(a) * n.dist;
-          ay = p.y + Math.sin(a) * n.dist;
-        }
-        var dx = mouse.x - n.x, dy = mouse.y - n.y;
-        var md = Math.hypot(dx, dy);
-        if (md < 240 && md > 1) {
-          var f = (1 - md / 240) * (n.hub ? 14 : 34);
-          ax += (dx / md) * f;
-          ay += (dy / md) * f;
-        }
-        n.vx = (n.vx + (ax - n.x) * .022) * .86;
-        n.vy = (n.vy + (ay - n.y) * .022) * .86;
-        n.x += n.vx;
-        n.y += n.vy;
-      });
-      hovered = null;
-      for (var k = 0; k < nodes.length; k++) {
-        if (Math.hypot(mouse.x - nodes[k].x, mouse.y - nodes[k].y) < nodes[k].r + 11) { hovered = nodes[k]; break; }
-      }
-      canvas.style.cursor = hovered ? 'pointer' : 'crosshair';
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = 'rgba(125,150,160,.10)';
-      for (var a2 = 0; a2 < 4; a2++) for (var j = a2 + 1; j < 4; j++) line(nodes[a2], nodes[j]);
-      nodes.forEach(function (n) {
-        if (!n.hub) { ctx.strokeStyle = hexA(accent, .15); line(n, nodes[n.parent]); }
-      });
-      nodes.forEach(function (n) {
-        var hov = hovered === n;
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + (hov ? 2.5 : 0), 0, 7);
-        if (n.hub) {
-          ctx.fillStyle = accent;
-          ctx.shadowColor = accent;
-          ctx.shadowBlur = 20;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        } else {
-          ctx.fillStyle = '#0a1014';
-          ctx.fill();
-          ctx.strokeStyle = hov ? accent : hexA(accent, .7);
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-        }
-        ctx.textAlign = 'center';
-        if (n.hub) {
-          ctx.font = "600 12px 'IBM Plex Mono', monospace";
-          ctx.fillStyle = '#e8f4f6';
-          ctx.fillText(n.label, n.x, n.y - n.r - 12);
-        } else {
-          ctx.font = "11px 'IBM Plex Mono', monospace";
-          ctx.fillStyle = hov ? '#e8f4f6' : 'rgba(160,180,188,.5)';
-          ctx.fillText(n.label, n.x, n.y - n.r - 9);
-        }
-      });
-      if (hovered) {
-        ctx.font = "11px 'IBM Plex Mono', monospace";
-        ctx.fillStyle = accent;
-        ctx.fillText('→ open #' + hovered.t, hovered.x, hovered.y + hovered.r + 20);
-      }
-      sim.raf = requestAnimationFrame(step);
-    };
-    sim.raf = requestAnimationFrame(step);
-  }
-
-  document.getElementById('openSystemBtn').addEventListener('click', openSystem);
-  document.getElementById('closeSystemBtn').addEventListener('click', closeSystem);
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && overlay.style.display !== 'none') closeSystem();
-  });
-})();
-</script>
+<script src="assets/portfolio.js"></script>
 </body>
 </html>

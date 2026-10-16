@@ -82,8 +82,12 @@ footer { border-top:1px solid var(--line); }
   .footer-inner { padding-left:22px; padding-right:22px; flex-direction:column; }
 }
 </style>
+<link rel="stylesheet" href="assets/refresh.css">
+<script src="assets/refresh.js" defer></script>
 </head>
-<body>
+<body class="case-study">
+<a href="#caseContent" class="skip-link">Skip to case study</a>
+<div class="reading-progress" aria-hidden="true"></div>
 <nav>
   <div class="nav-inner">
     <a class="back mono" href="index.html#hardware">← BACK TO PORTFOLIO</a>
@@ -91,7 +95,7 @@ footer { border-top:1px solid var(--line); }
   </div>
 </nav>
 
-<main>
+<main id="caseContent">
   <header class="hero container">
     <div class="hero-grid">
       <div>
@@ -115,11 +119,11 @@ footer { border-top:1px solid var(--line); }
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <div class="section-no mono">01 / SYSTEM</div>
         <div><h2>From a physical zone to a digital event</h2><p class="intro">The project combines two custom hardware nodes with a software pipeline. The prototype was designed as one complete system rather than a collection of disconnected components.</p></div>
       </div>
-      <div class="system-grid">
+      <div class="system-grid" data-reveal>
         <figure class="media-card"><img src="assets/sketch-schematic.png" alt="Original Indoor Tracking System schematic"><figcaption class="mono">fig.01 — original system schematic</figcaption></figure>
         <div>
           <p class="copy">A ceiling-mounted transmitter emits a coded infrared beacon over a predefined area. The receiver attached to the shopping cart detects the beacon when it crosses into that area, timestamps the event and sends it over Wi-Fi.</p>
@@ -137,12 +141,12 @@ footer { border-top:1px solid var(--line); }
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <div class="section-no mono">02 / HARDWARE</div>
         <div><h2>Two nodes, designed as one system</h2><p class="intro">Both prototypes were developed from circuit and enclosure sketches through working perfboard implementations and custom 3D-printed housings.</p></div>
       </div>
 
-      <article class="device" id="transmitter">
+      <article class="device" data-reveal id="transmitter">
         <div class="device-gallery">
           <figure class="media-card main"><img src="assets/hw-board.png" alt="ESP32 transmitter board"><figcaption class="mono">working transmitter prototype</figcaption></figure>
           <figure class="media-card"><img src="assets/hw-enclosure.png" alt="3D-printed transmitter enclosure"><figcaption class="mono">custom FDM enclosure</figcaption></figure>
@@ -163,7 +167,7 @@ footer { border-top:1px solid var(--line); }
         </div>
       </article>
 
-      <article class="device" id="receiver">
+      <article class="device" data-reveal id="receiver">
         <div class="device-gallery">
           <figure class="media-card main"><img src="assets/hw-rx-board.png" alt="ESP32 receiver board"><figcaption class="mono">working wireless receiver prototype</figcaption></figure>
           <figure class="media-card"><img src="assets/hw-rx-enclosure.png" alt="Receiver enclosure with internal battery"><figcaption class="mono">battery and hook-on enclosure</figcaption></figure>
@@ -188,11 +192,11 @@ footer { border-top:1px solid var(--line); }
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <div class="section-no mono">03 / OWNERSHIP</div>
         <div><h2>End-to-end design responsibility</h2><p class="intro">The thesis covered the complete path from physical sensing to documented working prototypes.</p></div>
       </div>
-      <div class="contribution">
+      <div class="contribution" data-reveal>
         <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">01</span><strong>Electronics</strong><p>Infrared pipeline, sensing, driver and power circuits.</p></div>
         <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">02</span><strong>Firmware</strong><p>Embedded behavior for beacon control, detection and event uplink.</p></div>
         <div><span class="mono" style="color:var(--cyan-dark); font-size:11px;">03</span><strong>Industrial design</strong><p>Prototype layout and custom 3D-printed enclosures.</p></div>
@@ -202,6 +206,6 @@ footer { border-top:1px solid var(--line); }
   </section>
 </main>
 
-<footer><div class="footer-inner mono"><span>© 2026 Lorenzo Mascia</span><a href="index.html#hardware">Return to portfolio ↑</a></div></footer>
+<footer><div class="footer-inner mono"><span>© 2026 Lorenzo Mascia</span><button class="motion-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◌</span><span class="motion-label">Motion on</span></button><a href="index.html#hardware">Return to portfolio ↑</a></div></footer>
 </body>
 </html>
