@@ -96,7 +96,7 @@
     {
       label: 'Ericsson',
       role: 'Product Developer · Ericsson',
-      meta: 'Jul 2025 — Present · Naples, Italy',
+      meta: 'Aug 2025 — Present · Naples, Italy',
       bullets: [
         'Contribute to product development for telecom and network-operations software.',
         'Work on machine-learning systems for alarm correlation and root-cause-analysis workflows.',
@@ -106,7 +106,7 @@
     {
       label: 'Ericsson Intern',
       role: 'Integration Engineer Intern · Ericsson',
-      meta: 'Jan 2025 — Jun 2025 · Naples, Italy',
+      meta: 'Jan 2025 — Jul 2025 · Naples, Italy',
       bullets: [
         'Supported software integration and validation in a production telecom environment.',
         'Progressed from a six-month internship to a permanent Product Developer position.'
@@ -286,7 +286,7 @@
     ];
     var sats = [
       ['NL Analytics Dashboard', 0, 'software'], ['CorrelAI', 0, 'software'], ['WASM RAG', 0, 'software'],
-      ['LifeQuest / QuestCore', 1, 'software'], ['NL2Py', 1, 'experiments'], ['LLM Distillery', 1, 'experiments'],
+      ['LifeQuest / QuestCore', 1, 'software'], ['NL2Py', 1, 'experiments'], ['LLM Distillery', 1, 'software'],
       ['Cloud Rush', 1, 'experiments'], ['IR Transmitter', 2, 'hardware'], ['IR Receiver', 2, 'hardware'],
       ['Vinted AutoLister', 1, 'experiments'], ['howai.cloud', 3, 'writing'], ['Indoor Tracking', 2, 'hardware']
     ].slice(0, Math.round(PROPS.systemNodes));
