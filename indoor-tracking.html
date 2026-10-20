@@ -83,6 +83,7 @@ footer { border-top:1px solid var(--line); }
 }
 </style>
 <link rel="stylesheet" href="assets/refresh.css">
+<link rel="stylesheet" href="assets/explorer.css">
 <script src="assets/refresh.js" defer></script>
 </head>
 <body class="case-study">
@@ -95,7 +96,7 @@ footer { border-top:1px solid var(--line); }
   </div>
 </nav>
 
-<main id="caseContent">
+<main id="caseContent" tabindex="-1">
   <header class="hero container">
     <div class="hero-grid">
       <div>
@@ -117,7 +118,9 @@ footer { border-top:1px solid var(--line); }
     </div>
   </header>
 
-  <section class="section">
+  <nav class="case-jumpnav" aria-label="Case study sections"><div class="container"><span class="case-jump-label">INSIDE THE BUILD</span><a href="#system">01 / System</a><a href="#devices">02 / Devices</a><a href="#ownership">03 / Ownership</a></div></nav>
+
+  <section class="section" id="system">
     <div class="container">
       <div class="section-head" data-reveal>
         <div class="section-no mono">01 / SYSTEM</div>
@@ -139,7 +142,7 @@ footer { border-top:1px solid var(--line); }
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="devices">
     <div class="container">
       <div class="section-head" data-reveal>
         <div class="section-no mono">02 / HARDWARE</div>
@@ -190,7 +193,7 @@ footer { border-top:1px solid var(--line); }
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="ownership">
     <div class="container">
       <div class="section-head" data-reveal>
         <div class="section-no mono">03 / OWNERSHIP</div>

@@ -109,7 +109,7 @@
       meta: 'Jan 2025 — Jul 2025 · Naples, Italy',
       bullets: [
         'Supported software integration and validation in a production telecom environment.',
-        'Progressed from a six-month internship to a permanent Product Developer position.'
+        'Progressed from an internship to a permanent Product Developer position.'
       ]
     },
     {
@@ -226,6 +226,7 @@
       event.preventDefault();
       if (link.closest('.system-navigation')) closeSystem();
       goto(id);
+      if (link.classList.contains('skip-link')) document.getElementById(id).focus({ preventScroll: true });
       history.replaceState(null, '', '#' + id);
     });
   });

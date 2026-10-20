@@ -31,6 +31,7 @@
   var progress = document.querySelector('.reading-progress');
   var navLinks = Array.from(document.querySelectorAll('.nav-links a'));
   var sections = Array.from(document.querySelectorAll('.portfolio-shell > header[id], .portfolio-shell > section[id]'));
+  var caseLinks = Array.from(document.querySelectorAll('.case-jumpnav a'));
   var framePending = false;
   function updateScroll() {
     framePending = false;
@@ -41,6 +42,15 @@
     sections.forEach(function (section) { if (section.getBoundingClientRect().top <= 220) active = '#' + section.id; });
     navLinks.forEach(function (link) {
       if (link.getAttribute('href') === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    var activeCase = '';
+    caseLinks.forEach(function (link) {
+      var section = document.querySelector(link.getAttribute('href'));
+      if (section && section.getBoundingClientRect().top <= 180) activeCase = link.getAttribute('href');
+    });
+    caseLinks.forEach(function (link) {
+      if (link.getAttribute('href') === activeCase) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   }
@@ -131,7 +141,7 @@
     var dialog = document.createElement('dialog');
     dialog.className = 'command-dialog';
     dialog.setAttribute('aria-labelledby', 'commandTitle');
-    dialog.innerHTML = '<div class="command-heading"><h2 id="commandTitle">QUICK NAVIGATION</h2><button class="dialog-close" type="button" aria-label="Close quick navigation">ESC ×</button></div><input class="command-input" type="search" aria-label="Search pages and actions" placeholder="Where would you like to go?" autocomplete="off" spellcheck="false" aria-controls="commandResults"><div class="command-list" id="commandResults" role="group" aria-label="Matching actions"></div><p class="command-empty" hidden>No matching actions. Try “work” or “contact”.</p><p class="command-help">↑ ↓ to choose · Enter to go · Esc to close</p>';
+    dialog.innerHTML = '<div class="command-heading"><h2 id="commandTitle">QUICK NAVIGATION</h2><button class="dialog-close" type="button" aria-label="Close quick navigation">ESC ×</button></div><input class="command-input" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="Search pages and actions" placeholder="Where would you like to go?" autocomplete="off" spellcheck="false" aria-controls="commandResults"><div class="command-list" id="commandResults" role="listbox" aria-label="Matching actions"></div><p class="command-empty" hidden>No matching actions. Try “work” or “contact”.</p><p class="command-help">↑ ↓ to choose · Enter to go · Esc to close</p>';
     document.body.appendChild(dialog);
     var input = dialog.querySelector('input');
     var results = dialog.querySelector('.command-list');
@@ -141,7 +151,7 @@
       { name: 'Back to the beginning', hint: '00 / home', words: 'top home hero', run: function () { scrollToSection('top'); } },
       { name: 'About Lorenzo', hint: '01 / about', words: 'profile stack skills', run: function () { scrollToSection('about'); } },
       { name: 'Experience & education', hint: '02 / journey', words: 'ericsson work career', run: function () { scrollToSection('experience'); } },
-      { name: 'Selected projects', hint: '03 / software', words: 'work ai lifequest correlai rag', run: function () { scrollToSection('software'); } },
+      { name: 'Selected projects', hint: '03 / software', words: 'work ai systems engines operations', run: function () { scrollToSection('software'); } },
       { name: 'Connected hardware', hint: '04 / hardware', words: 'esp32 indoor tracking thesis', run: function () { scrollToSection('hardware'); } },
       { name: 'Other experiments', hint: '05 / lab', words: 'nl2py cloud rush llm vinted', run: function () { scrollToSection('experiments'); } },
       { name: 'Thinking in public', hint: '06 / writing', words: 'howai articles blog research', run: function () { scrollToSection('writing'); } },
@@ -150,17 +160,33 @@
       { name: 'Download CV', hint: 'PDF', words: 'resume curriculum', run: function () { document.querySelector('a[download]').click(); } },
       { name: 'Toggle animations', hint: 'motion preference', words: 'reduce motion pause accessibility', run: toggleMotion }
     ];
+    document.querySelectorAll('[data-project]').forEach(function (card) {
+      actions.push({
+        name: card.querySelector('h3').textContent,
+        hint: 'project overview',
+        words: card.querySelector('.feature-card-meta').textContent,
+        run: function () { document.dispatchEvent(new CustomEvent('portfolio:project', { detail: { key: card.dataset.project } })); }
+      });
+    });
     function choose(index) {
       selection = index;
-      Array.from(results.children).forEach(function (button, i) { button.classList.toggle('is-selected', i === selection); });
+      Array.from(results.children).forEach(function (button, i) {
+        button.classList.toggle('is-selected', i === selection);
+        button.setAttribute('aria-selected', String(i === selection));
+      });
+      if (results.children[selection]) input.setAttribute('aria-activedescendant', results.children[selection].id);
+      else input.removeAttribute('aria-activedescendant');
     }
     function renderActions() {
       var query = input.value.trim().toLowerCase();
       visibleActions = actions.filter(function (action) { return (action.name + ' ' + action.hint + ' ' + action.words).toLowerCase().includes(query); });
       results.replaceChildren();
-      visibleActions.forEach(function (action) {
+      visibleActions.forEach(function (action, index) {
         var button = document.createElement('button');
         button.type = 'button';
+        button.id = 'commandAction' + index;
+        button.setAttribute('role', 'option');
+        button.tabIndex = -1;
         var label = document.createElement('span'); label.textContent = action.name;
         var hint = document.createElement('span'); hint.textContent = action.hint;
         button.append(label, hint);
@@ -172,14 +198,17 @@
     }
     function openCommands() {
       if (document.getElementById('systemOverlay').style.display !== 'none') return;
+      if (document.querySelector('dialog[open]')) return;
       closeMenu();
       input.value = '';
       renderActions();
       dialog.showModal();
+      input.setAttribute('aria-expanded', 'true');
       input.focus();
     }
     commandButton.addEventListener('click', openCommands);
     dialog.querySelector('.dialog-close').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('close', function () { input.setAttribute('aria-expanded', 'false'); });
     dialog.addEventListener('click', function (event) { closeOnBackdrop(dialog, event); });
     input.addEventListener('input', renderActions);
     input.addEventListener('keydown', function (event) {
@@ -197,16 +226,63 @@
     if (/Mac|iPhone|iPad/.test(navigator.platform)) document.getElementById('commandShortcut').textContent = '⌘ K';
   }
 
+  var copyEmail = document.getElementById('copyEmail');
+  if (copyEmail) {
+    copyEmail.hidden = false;
+    var copyTimer;
+    copyEmail.addEventListener('click', async function () {
+      var email = document.querySelector('.contact-email');
+      var status = document.getElementById('copyStatus');
+      var value = email.textContent;
+      var copied = false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(value); copied = true; }
+      } catch (_) {}
+      if (!copied) {
+        var field = document.createElement('textarea');
+        field.value = value; field.readOnly = true;
+        field.style.cssText = 'position:fixed;left:-9999px;top:0;';
+        document.body.appendChild(field); field.select();
+        try { copied = document.execCommand('copy'); } catch (_) {}
+        field.remove(); copyEmail.focus({ preventScroll: true });
+      }
+      clearTimeout(copyTimer);
+      copyEmail.textContent = copied ? 'Copied ✓' : 'Select email';
+      copyEmail.dataset.copied = String(copied);
+      status.textContent = copied ? 'Email address copied to clipboard.' : 'Copy unavailable. The email address is selected; use your device’s copy command.';
+      if (!copied) {
+        var range = document.createRange(); range.selectNodeContents(email);
+        var selected = window.getSelection(); selected.removeAllRanges(); selected.addRange(range);
+      }
+      copyTimer = setTimeout(function () { copyEmail.textContent = 'Copy email ⧉'; copyEmail.dataset.copied = 'false'; }, 2500);
+    });
+  }
+
   // Inspect original prototype photos and sketches without leaving the case study.
   if (document.body.classList.contains('case-study') && typeof HTMLDialogElement !== 'undefined') {
     var imageDialog = document.createElement('dialog');
     imageDialog.className = 'image-dialog';
     imageDialog.setAttribute('aria-label', 'Prototype image viewer');
-    imageDialog.innerHTML = '<div class="command-heading"><span class="mono" style="font-size:10px; color:#62696d;">FROM THE BUILD LOG</span><button class="dialog-close" aria-label="Close image viewer" type="button">ESC ×</button></div><img alt=""><p></p>';
+    imageDialog.innerHTML = '<div class="command-heading"><span class="mono" style="font-size:10px; color:#62696d;">FROM THE BUILD LOG</span><button class="dialog-close" aria-label="Close image viewer" type="button">ESC ×</button></div><img alt=""><div class="image-gallery-controls"><button type="button" class="image-previous" aria-label="Previous image">←</button><span role="status" aria-live="polite" aria-atomic="true"></span><button type="button" class="image-next" aria-label="Next image">→</button></div><p class="image-gallery-caption"></p>';
     document.body.appendChild(imageDialog);
     imageDialog.querySelector('button').addEventListener('click', function () { imageDialog.close(); });
     imageDialog.addEventListener('click', function (event) { closeOnBackdrop(imageDialog, event); });
-    document.querySelectorAll('figure img').forEach(function (image) {
+    var gallery = Array.from(document.querySelectorAll('main figure img'));
+    var currentImage = 0;
+    function showImage(index) {
+      currentImage = (index + gallery.length) % gallery.length;
+      var image = gallery[currentImage];
+      var large = imageDialog.querySelector('img'); large.src = image.src; large.alt = image.alt;
+      imageDialog.querySelector('.image-gallery-caption').textContent = image.alt;
+      imageDialog.querySelector('.image-gallery-controls span').textContent = String(currentImage + 1).padStart(2, '0') + ' / ' + String(gallery.length).padStart(2, '0');
+    }
+    imageDialog.querySelector('.image-previous').addEventListener('click', function () { showImage(currentImage - 1); });
+    imageDialog.querySelector('.image-next').addEventListener('click', function () { showImage(currentImage + 1); });
+    imageDialog.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showImage(currentImage + (event.key === 'ArrowRight' ? 1 : -1)); }
+      else if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); showImage(event.key === 'Home' ? 0 : gallery.length - 1); }
+    });
+    gallery.forEach(function (image, index) {
       var button = document.createElement('button');
       button.className = 'image-zoom';
       button.type = 'button';
@@ -217,10 +293,7 @@
       var caption = image.closest('figure').querySelector('figcaption');
       if (caption) caption.appendChild(document.createTextNode(' · click to inspect ↗'));
       button.addEventListener('click', function () {
-        var large = imageDialog.querySelector('img');
-        large.src = image.src;
-        large.alt = image.alt;
-        imageDialog.querySelector('p').textContent = image.alt;
+        showImage(index);
         imageDialog.showModal();
       });
     });

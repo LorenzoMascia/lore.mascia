@@ -15,6 +15,8 @@ knowledge graph. The refreshed design pairs paper tones and cyan accents with re
 | [`assets/portfolio.js`](assets/portfolio.js) | Terminal, experience tabs, section navigation and System Mode. |
 | [`assets/refresh.css`](assets/refresh.css) | Shared responsive design, orbital illustration and motion styles. |
 | [`assets/refresh.js`](assets/refresh.js) | Quick navigation, mobile menu, motion preference, reading progress and image viewer. |
+| [`assets/project-explorer.js`](assets/project-explorer.js) | Project filters and accessible project overviews, using existing portfolio content. |
+| [`assets/explorer.css`](assets/explorer.css) | Project cards and dialogs, contact tools and case-study section navigation. |
 | [`assets/`](assets/) | Project artwork, CV, prototype photographs and original thesis sketches. |
 | [`Portfolio.dc.html`](Portfolio.dc.html) | The original Claude Design source this site was built from. |
 
@@ -35,19 +37,23 @@ Buildless HTML, CSS and vanilla JavaScript, with no framework or runtime depende
 The original design source is retained in `Portfolio.dc.html`.
 
 - **Interactive orbital diagram** with selectable hardware, software, AI and product domains
+- **Project explorer** with filters for AI systems, product engines and applied operations; six detailed overviews with repository or contact actions
 - **Typed terminal**, scroll reveals and an animated career timeline
-- **Quick navigation** with `Ctrl+K` / `⌘K`, search and arrow-key selection
+- **Quick navigation** with `Ctrl+K` / `⌘K`, search, arrow-key selection and direct access to individual project overviews
 - **Mobile navigation**, active-section indicators and reading progress
 - **Magnet buttons** that lean toward the cursor
 - **`style-hover`** shim (inline hover styles applied on `mouseenter`/`mouseleave`)
 - **Experience tabs** with keyboard navigation and accessible panel relationships
-- **Hardware case study** with enlarged photos and original sketches in a keyboard-accessible image viewer
+- **Hardware case study** with a sticky section outline and a photo/sketch gallery; use the arrow keys or previous/next buttons, and Home/End for the first/last image
+- **Copy email** with accessible feedback and an email-selection fallback when clipboard access is unavailable
 - **SYSTEM MODE** — an animated node graph with keyboard/touch destinations, focus containment and `Esc` to exit
 - **Motion control** in the footer; respects `prefers-reduced-motion` and saves an explicit preference locally
 
 The orbital animation pauses offscreen; the graph stops when its dialog closes or the browser tab is hidden.
 Reduced-motion mode keeps the graph static and disables animated scrolling and decorative movement.
 Photographs and project previews load lazily. Local QA screenshots and browser profiles belong in the ignored `.preview/` directory.
+
+Project cards and repository/contact links remain available without JavaScript. Filtering and detail dialogs are progressive enhancements. Hidden legacy project grids have been removed; longer project descriptions now live in `assets/project-explorer.js`.
 
 Theme accent is driven by the `--accent` / `--accent-text` CSS variables.
 
