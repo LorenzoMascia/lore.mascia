@@ -40,10 +40,10 @@ The original design source is retained in `Portfolio.dc.html`.
 - **Project explorer** with filters for AI systems, product engines and applied operations; six detailed overviews with repository or contact actions
 - **Typed terminal**, scroll reveals and an animated career timeline
 - **Quick navigation** with `Ctrl+K` / `⌘K`, search, arrow-key selection and direct access to individual project overviews
-- **Mobile navigation**, active-section indicators and reading progress
+- **Mobile navigation**, active-section indicators, reading progress and browser Back/Forward support for section links
 - **Magnet buttons** that lean toward the cursor
 - **`style-hover`** shim (inline hover styles applied on `mouseenter`/`mouseleave`)
-- **Experience tabs** with keyboard navigation and accessible panel relationships
+- **Experience tabs** with arrow keys matching the responsive orientation, accessible panel relationships and a current-role overview that remains visible without JavaScript
 - **Hardware case study** with a sticky section outline and a photo/sketch gallery; use the arrow keys or previous/next buttons, and Home/End for the first/last image
 - **Copy email** with accessible feedback and an email-selection fallback when clipboard access is unavailable
 - **SYSTEM MODE** — an animated node graph with keyboard/touch destinations, focus containment and `Esc` to exit

@@ -142,7 +142,12 @@
 
   tabsHost.setAttribute('role', 'tablist');
   tabsHost.setAttribute('aria-label', 'Experience');
-  tabsHost.setAttribute('aria-orientation', window.innerWidth <= 800 ? 'horizontal' : 'vertical');
+  var horizontalTabs = window.matchMedia('(max-width: 800px)');
+  function updateTabOrientation() {
+    tabsHost.setAttribute('aria-orientation', horizontalTabs.matches ? 'horizontal' : 'vertical');
+  }
+  updateTabOrientation();
+  horizontalTabs.addEventListener('change', updateTabOrientation);
   var experiencePanel = roleEl.parentElement;
   experiencePanel.classList.add('experience-panel');
   experiencePanel.id = 'experiencePanel';
@@ -156,8 +161,10 @@
     b.setAttribute('aria-controls', 'experiencePanel');
     b.addEventListener('keydown', function (event) {
       var next = idx;
-      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (idx + 1) % tabData.length;
-      else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (idx - 1 + tabData.length) % tabData.length;
+      var forward = horizontalTabs.matches ? 'ArrowRight' : 'ArrowDown';
+      var backward = horizontalTabs.matches ? 'ArrowLeft' : 'ArrowUp';
+      if (event.key === forward) next = (idx + 1) % tabData.length;
+      else if (event.key === backward) next = (idx - 1 + tabData.length) % tabData.length;
       else if (event.key === 'Home') next = 0;
       else if (event.key === 'End') next = tabData.length - 1;
       else return;
@@ -227,12 +234,23 @@
       if (link.closest('.system-navigation')) closeSystem();
       goto(id);
       if (link.classList.contains('skip-link')) document.getElementById(id).focus({ preventScroll: true });
-      history.replaceState(null, '', '#' + id);
+      if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
     });
   });
   if (location.hash && sectionIds.indexOf(location.hash.slice(1)) !== -1) {
     requestAnimationFrame(function () { goto(location.hash.slice(1)); });
   }
+  // Restore the section offset after browser history or a manually changed hash.
+  var historyFrame = 0;
+  function restoreSection() {
+    cancelAnimationFrame(historyFrame);
+    historyFrame = requestAnimationFrame(function () {
+      var id = location.hash.slice(1) || 'top';
+      if (sectionIds.indexOf(id) !== -1) goto(id);
+    });
+  }
+  window.addEventListener('popstate', restoreSection);
+  window.addEventListener('hashchange', restoreSection);
 
   // ---- SYSTEM MODE ----
   var overlay = document.getElementById('systemOverlay');

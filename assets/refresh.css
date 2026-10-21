@@ -133,6 +133,8 @@ body.is-scrolled [data-mq="arrows"] { opacity: 1; visibility: visible; }
 [data-mq="timeline-scroll"] { max-width: 100%; overflow-x: auto; scrollbar-width: thin; justify-content: flex-start !important; }
 .timeline-enter svg path { animation: draw-path 2.5s var(--ease) both; }
 .experience-panel.is-switching { animation: enter-up .4s var(--ease); }
+#expTabs:empty { display: none !important; }
+#experience > [data-mq="stack"]:has(#expTabs:empty) { grid-template-columns: 1fr !important; }
 .command-dialog { width: min(540px, calc(100% - 32px)); padding: 0; border: 1px solid #c5cbbd; background: var(--paper); color: var(--ink); box-shadow: 0 25px 100px #0a101440; max-height: 80svh; }
 .command-dialog::backdrop, .image-dialog::backdrop { background: #101c26a6; backdrop-filter: blur(8px); }
 .command-heading { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 12px; }

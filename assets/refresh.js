@@ -133,7 +133,7 @@
     var nav = document.querySelector('nav');
     var offset = nav ? nav.getBoundingClientRect().height + 20 : 20;
     window.scrollTo({ top: Math.max(0, window.scrollY + section.getBoundingClientRect().top - offset), behavior: reduced ? 'auto' : 'smooth' });
-    history.replaceState(null, '', '#' + id);
+    if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
   }
 
   var commandButton = document.getElementById('openCommands');
