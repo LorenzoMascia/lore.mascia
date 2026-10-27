@@ -145,6 +145,11 @@
     document.body.appendChild(dialog);
     var input = dialog.querySelector('input');
     var results = dialog.querySelector('.command-list');
+    var searchStatus = document.createElement('p');
+    searchStatus.className = 'sr-only';
+    searchStatus.setAttribute('role', 'status');
+    searchStatus.setAttribute('aria-atomic', 'true');
+    dialog.appendChild(searchStatus);
     var selection = 0;
     var visibleActions = [];
     var actions = [
@@ -177,9 +182,15 @@
       if (results.children[selection]) input.setAttribute('aria-activedescendant', results.children[selection].id);
       else input.removeAttribute('aria-activedescendant');
     }
+    function normalizeSearch(value) {
+      return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    }
     function renderActions() {
-      var query = input.value.trim().toLowerCase();
-      visibleActions = actions.filter(function (action) { return (action.name + ' ' + action.hint + ' ' + action.words).toLowerCase().includes(query); });
+      var terms = normalizeSearch(input.value).split(/\s+/).filter(Boolean);
+      visibleActions = actions.filter(function (action) {
+        var text = normalizeSearch(action.name + ' ' + action.hint + ' ' + action.words);
+        return terms.every(function (term) { return text.includes(term); });
+      });
       results.replaceChildren();
       visibleActions.forEach(function (action, index) {
         var button = document.createElement('button');
@@ -194,6 +205,7 @@
         results.appendChild(button);
       });
       dialog.querySelector('.command-empty').hidden = visibleActions.length !== 0;
+      searchStatus.textContent = visibleActions.length + (visibleActions.length === 1 ? ' result' : ' results');
       choose(0);
     }
     function openCommands() {

@@ -39,7 +39,7 @@ The original design source is retained in `Portfolio.dc.html`.
 - **Interactive orbital diagram** with selectable hardware, software, AI and product domains
 - **Project explorer** with filters for AI systems, product engines and applied operations; six detailed overviews with repository or contact actions
 - **Typed terminal**, scroll reveals and an animated career timeline
-- **Quick navigation** with `Ctrl+K` / `⌘K`, search, arrow-key selection and direct access to individual project overviews
+- **Quick navigation** with `Ctrl+K` / `⌘K`, multiword search in any order (ignoring accents and punctuation), announced result counts, arrow-key selection and direct access to individual project overviews
 - **Mobile navigation**, active-section indicators, reading progress and browser Back/Forward support for section links
 - **Magnet buttons** that lean toward the cursor
 - **`style-hover`** shim (inline hover styles applied on `mouseenter`/`mouseleave`)
